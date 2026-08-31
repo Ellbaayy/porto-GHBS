@@ -4,6 +4,7 @@ import "./globals.css";
 import { TopNav } from "@/components/TopNav";
 import { Footer } from "@/components/Footer";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
+import { Chatbot } from "@/components/Chatbot";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -34,15 +35,15 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} ${jetbrains.variable} ${instrumentSerif.variable} antialiased`}
-    >
-      <body className="bg-bg text-ink min-h-screen flex flex-col">
+    <html lang="en">
+      <body
+        className="bg-bg text-ink min-h-screen flex flex-col"
+      >
         <TopNav />
         <main className="flex-1">{children}</main>
         <Footer />
         <RevealOnScroll />
+        <Chatbot />
       </body>
     </html>
   );
