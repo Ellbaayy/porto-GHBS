@@ -80,7 +80,7 @@ export function About() {
             {interests.map((tag) => (
               <li
                 key={tag}
-                className="text-[14px] px-[14px] py-2 border border-line-strong rounded-full text-ink-soft bg-white hover:bg-lemon hover:text-ink hover:border-lemon-deep transition cursor-default"
+                className="text-[14px] px-[14px] py-2 border border-line-strong rounded-full text-ink-soft bg-bg-soft hover:bg-lemon hover:text-ink hover:border-lemon-deep transition cursor-default"
               >
                 {tag}
               </li>

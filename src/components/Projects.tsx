@@ -86,7 +86,7 @@ export function Projects() {
                 key={p.index}
                 data-card
                 className={cn(
-                  "snap-start bg-white border border-line rounded-[18px] p-7",
+                  "snap-start bg-bg-soft border border-line rounded-[18px] p-7",
                   "min-h-[360px] flex flex-col relative",
                   "hover:-translate-y-1 hover:border-cobalt hover:shadow-[0_20px_40px_-28px_rgba(20,19,15,0.35)]",
                   "transition",

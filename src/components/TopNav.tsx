@@ -59,7 +59,7 @@ export function TopNav() {
           href="https://instagram.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden md:inline-block text-[13px] font-semibold px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-cobalt hover:bg-cobalt-soft hover:text-cobalt-deep transition"
+          className="text-[13px] px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-cobalt hover:bg-cobalt-soft hover:text-cobalt-deep transition"
         >
           {profile.instagramHandle}
         </a>
