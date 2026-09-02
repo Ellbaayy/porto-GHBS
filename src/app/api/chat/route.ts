@@ -64,7 +64,7 @@ export async function POST(req: NextRequest) {
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: "llama-3.3-70b-versatile",
+      model: "qwen/qwen3.8-27b",
       messages: [{ role: "system", content: systemPrompt }, ...messages],
       stream: true,
       temperature: 0.7,
