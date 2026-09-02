@@ -3,7 +3,7 @@ export const profile = {
   short: "Gesang Hemas Bayu Sekti.",
   initials: "GHBS",
   instagramHandle: "@ellbaayy",
-  email: "[email protected]",
+  email: "bayusekti28@gmail.com",
   tagline: "Personal Portfolio · 2026",
   summary:
     "Informatics student at President University — focused on Artificial Intelligence, Computer Vision, and building intelligent systems that turn ideas into working software.",
@@ -192,7 +192,7 @@ export const contact = {
     "I'm open to collaboration, interesting projects, AI experiments, and opportunities to learn and build together.",
   vision: "Building the future, one intelligent system at a time.",
   links: [
-    { label: "Email", value: "[email protected]", href: "mailto:[email protected]" },
+    { label: "Email", value: "bayusekti28@gmail.com", href: "mailto:bayusekti28@gmail.com" },
     { label: "GitHub", value: "github.com/Ellbaayy", href: "https://github.com/Ellbaayy" },
     { label: "LinkedIn", value: "linkedin.com/in/gesang-hemas-bayu-sekti", href: "https://linkedin.com/in/gesang-hemas-bayu-sekti-01250737b" },
     { label: "Instagram", value: "@ellbaayy", href: "https://instagram.com/ellbaayy" },
