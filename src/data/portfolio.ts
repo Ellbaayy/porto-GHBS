@@ -193,8 +193,8 @@ export const contact = {
   vision: "Building the future, one intelligent system at a time.",
   links: [
     { label: "Email", value: "[email protected]", href: "mailto:[email protected]" },
-    { label: "GitHub", value: "github.com/gesangbayu", href: "https://github.com" },
-    { label: "LinkedIn", value: "linkedin.com/in/gesangbayu", href: "https://linkedin.com" },
-    { label: "Instagram", value: "@gesang.bayu", href: "https://instagram.com" },
+    { label: "GitHub", value: "github.com/Ellbaayy", href: "https://github.com/Ellbaayy" },
+    { label: "LinkedIn", value: "linkedin.com/in/gesang-hemas-bayu-sekti", href: "https://linkedin.com/in/gesang-hemas-bayu-sekti-01250737b" },
+    { label: "Instagram", value: "@gesang.bayu", href: "https://instagram.com/gesang.bayu" },
   ],
 };

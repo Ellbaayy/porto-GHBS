@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import { profile } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
 
@@ -15,6 +16,7 @@ const links = [
 
 export function TopNav() {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -22,6 +24,9 @@ export function TopNav() {
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  // Close the mobile menu when a link is picked, or when resizing up to desktop
+  const close = () => setOpen(false);
 
   return (
     <header
@@ -35,6 +40,7 @@ export function TopNav() {
       <nav className="max-w-[1240px] mx-auto px-6 md:px-10 lg:px-14 py-[18px] flex items-center gap-7">
         <a
           href="#hero"
+          onClick={close}
           className="font-mono text-[16px] font-bold tracking-[0.04em] text-ink hover:opacity-70 transition"
         >
           {profile.initials}
@@ -55,15 +61,58 @@ export function TopNav() {
           ))}
         </ul>
 
-        <a
-          href="https://instagram.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-[13px] px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-cobalt hover:bg-cobalt-soft hover:text-cobalt-deep transition"
-        >
-          {profile.instagramHandle}
-        </a>
+        <div className="ml-auto md:ml-0 flex items-center gap-2">
+          <a
+            href="https://instagram.com/gesang.bayu"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex text-[13px] px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-cobalt hover:bg-cobalt-soft hover:text-cobalt-deep transition"
+          >
+            {profile.instagramHandle}
+          </a>
+
+          {/* Mobile menu toggle */}
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-label={open ? "Close menu" : "Open menu"}
+            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-line-strong text-ink hover:border-cobalt hover:text-cobalt transition"
+          >
+            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          </button>
+        </div>
       </nav>
+
+      {/* Mobile dropdown panel */}
+      {open && (
+        <div className="md:hidden border-t border-line bg-bg/95 backdrop-blur-md">
+          <ul className="max-w-[1240px] mx-auto px-6 py-4 flex flex-col">
+            {links.map((l) => (
+              <li key={l.href} className="border-b border-line/50 last:border-b-0">
+                <a
+                  href={l.href}
+                  onClick={close}
+                  className="block py-3.5 text-[15px] font-medium text-ink hover:text-cobalt transition-colors"
+                >
+                  {l.label}
+                </a>
+              </li>
+            ))}
+            <li className="pt-4">
+              <a
+                href="https://instagram.com/gesang.bayu"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={close}
+                className="inline-flex text-[13px] px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-cobalt hover:bg-cobalt-soft hover:text-cobalt-deep transition"
+              >
+                {profile.instagramHandle}
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
     </header>
   );
 }
