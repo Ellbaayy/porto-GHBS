@@ -13,7 +13,7 @@ const yearColors = [
 
 export function Journey() {
   return (
-    <section id="journey" className="py-16 md:py-28">
+    <section id="journey" className="slide-section">
       <div className="max-w-[1240px] mx-auto px-6 md:px-10 lg:px-14">
         <header className="section-head mb-12 md:mb-14">
           <span className="section-num section-num-lemon">05</span>

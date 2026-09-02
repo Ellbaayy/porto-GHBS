@@ -72,6 +72,11 @@
   --font-mono: var(--font-jetbrains);
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
+
 html, body {
   /* Continuous scroll scene: background ikut scroll — "bercerita" dari
      hills (hero) -> falls -> cavern -> open -> sea (contact) */
@@ -81,7 +86,7 @@ html, body {
       rgba(18,15,10,0.16) 35%,
       rgba(18,15,10,0.26) 70%,
       rgba(18,15,10,0.34) 100%),
-    url("/scroll-scene.svg") center top / 100% auto no-repeat,
+    url("/scroll-scene.svg") center top / 100% 700vh no-repeat,
     var(--bg);
   color: var(--ink);
   font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -90,7 +95,20 @@ html, body {
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+
+/* Slide Deck Snap Class -------------------------------------------- */
+.slide-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+}
 
 ::selection {
   background: var(--accent);

@@ -52,7 +52,7 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="py-16 md:py-28">
+    <section id="projects" className="slide-section">
       <div className="max-w-[1240px] mx-auto px-6 md:px-10 lg:px-14">
         <header className="section-head mb-12 md:mb-14">
           <span className="section-num section-num-sage">03</span>

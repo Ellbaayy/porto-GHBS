@@ -2,7 +2,7 @@ import { aboutInfo, interests } from "@/data/portfolio";
 
 export function About() {
   return (
-    <section id="about" className="py-16 md:py-28">
+    <section id="about" className="slide-section">
       <div className="max-w-[1240px] mx-auto px-6 md:px-10 lg:px-14">
         {/* Section header */}
         <header className="section-head mb-12 md:mb-14">

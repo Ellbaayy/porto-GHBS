@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
-    <section id="hero" className="pt-14 md:pt-24 pb-10 md:pb-16">
+    <section id="hero" className="slide-section">
       <div className="max-w-[1240px] mx-auto px-6 md:px-10 lg:px-14">
         <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8 lg:gap-16 items-end">
           {/* Left: main display */}
