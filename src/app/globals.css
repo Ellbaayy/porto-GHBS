@@ -73,11 +73,11 @@
 }
 
 html, body {
+  /* Wallpaper elegan (glow karamel hangat + grain) + overlay gelap tipis
+     biar kontras teks tetap aman + base color */
   background:
-    radial-gradient(at 10% 0%, var(--coral-soft) 0px, transparent 50%),
-    radial-gradient(at 90% 10%, var(--cobalt-soft) 0px, transparent 50%),
-    radial-gradient(at 80% 80%, var(--plum-soft) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, var(--lemon-soft) 0px, transparent 50%),
+    radial-gradient(ellipse at center, rgba(20,17,13,0.12) 0%, rgba(20,17,13,0.45) 100%),
+    url("/wallpaper.svg") center / cover no-repeat fixed,
     var(--bg);
   background-attachment: fixed;
   color: var(--ink);
