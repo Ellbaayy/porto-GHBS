@@ -101,13 +101,13 @@ html, body {
   scroll-snap-align: start;
   scroll-snap-stop: always;
   min-height: 100vh;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   position: relative;
   box-sizing: border-box;
-  overflow: hidden;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
 }
 
 ::selection {
