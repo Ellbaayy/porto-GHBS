@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import { profile, interests, techStack, projects, achievements, learning, agentTopics, aboutInfo } from "@/data/portfolio";
 
-export const runtime = "edge";
+export const runtime = "nodejs";
 
 const systemPrompt = `You are "GHBS Assistant", an AI chatbot that represents ${profile.name} — a ${profile.summary}
 

@@ -1,7 +1,8 @@
 import { journey } from "@/data/portfolio";
 import { cn } from "@/lib/utils";
+import type { CSSProperties } from "react";
 
-const dotColors = ["#ff6b4a", "#4a6fff", "#c44bff", "#c79e1a"]; // coral, cobalt, plum, lemon-deep
+const dotColors = ["var(--coral)", "var(--cobalt)", "var(--plum)", "var(--lemon-deep)"];
 const bulletColors = ["var(--coral)", "var(--cobalt)", "var(--plum)", "var(--lemon-deep)"];
 const yearColors = [
   { bg: "bg-coral-soft", text: "text-coral-deep" },
@@ -32,14 +33,14 @@ export function Journey() {
 
             return (
               <li
-                key={i}
+                key={`${j.year}-${j.heading}`}
                 className="relative py-[18px] pl-4 timeline-dot"
                 style={
                   {
                     "--dot-color": dotColor,
                     "--dot-ring": isActive ? "var(--coral-soft)" : "transparent",
                     "--bullet-color": bulletColor,
-                  } as React.CSSProperties
+                  } as CSSProperties
                 }
               >
                 <span

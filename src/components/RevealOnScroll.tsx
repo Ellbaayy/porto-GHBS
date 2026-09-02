@@ -5,15 +5,20 @@ import { useEffect } from "react";
 export function RevealOnScroll() {
   useEffect(() => {
     const targets = document.querySelectorAll<HTMLElement>("section, .reveal, [data-reveal]");
-    // Add base reveal classes and alternating direction classes
-    targets.forEach((el, idx) => {
+    // Reveal sections with a clean fade-up (no direction alternation — that
+    // wobble/rotate read as motion for motion's sake on full sections).
+    targets.forEach((el) => {
       el.classList.add("reveal");
-      if (idx % 2 === 0) {
-        el.classList.add("reveal-left");
-      } else {
-        el.classList.add("reveal-right");
-      }
     });
+
+    // Respect users who prefer reduced motion: show everything immediately.
+    const prefersReduced =
+      typeof window.matchMedia === "function" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (prefersReduced) {
+      targets.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
 
     if (!("IntersectionObserver" in window)) {
       // If no IntersectionObserver, just show everything
