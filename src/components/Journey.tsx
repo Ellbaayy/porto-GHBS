@@ -47,9 +47,9 @@ export function Journey() {
                   className={cn(
                     "inline-block font-mono text-[13px] px-2.5 py-1 rounded-md mb-2.5",
                     isFuture
-                      ? "bg-ink text-white"
+                      ? "bg-ink text-bg"
                       : isActive
-                        ? "bg-coral text-white"
+                        ? "bg-coral text-bg"
                         : `${yearColors[i % yearColors.length].bg} ${yearColors[i % yearColors.length].text}`,
                   )}
                 >
@@ -76,11 +76,11 @@ export function Journey() {
         </ol>
 
         {/* Philosophy */}
-        <div className="mt-12 md:mt-20 p-8 md:p-14 bg-cobalt text-white text-center rounded-[28px] shadow-[0_30px_60px_-30px_rgba(74,111,255,0.5)]">
-          <p className="font-serif italic text-[clamp(28px,3.5vw,44px)] leading-[1.2] text-white m-0 mb-[18px]">
+        <div className="mt-12 md:mt-20 p-8 md:p-14 bg-cobalt-soft text-cobalt-deep text-center rounded-[28px] shadow-[0_30px_60px_-30px_rgba(79,59,34,0.55)]">
+          <p className="font-serif italic text-[clamp(28px,3.5vw,44px)] leading-[1.2] text-ink m-0 mb-[18px]">
             &ldquo;Learn. Build. Experiment. Innovate.&rdquo;
           </p>
-          <p className="max-w-[60ch] mx-auto text-white/85 text-[15px]">
+          <p className="max-w-[60ch] mx-auto text-cobalt-deep/85 text-[15px]">
             I believe the best way to understand technology is not only by studying it, but by
             building with it. Every project is an opportunity to learn something new, experiment
             with an idea, and turn a problem into a solution.

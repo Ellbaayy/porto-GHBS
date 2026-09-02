@@ -46,7 +46,7 @@ export function About() {
             <div className="flex flex-wrap gap-3.5 mt-7">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center px-[22px] py-[14px] text-[14px] font-medium rounded-full bg-ink text-white hover:bg-coral hover:-translate-y-px transition"
+                className="inline-flex items-center justify-center px-[22px] py-[14px] text-[14px] font-medium rounded-full bg-ink text-bg hover:bg-accent hover:-translate-y-px transition"
               >
                 Get in touch →
               </a>
@@ -80,7 +80,7 @@ export function About() {
             {interests.map((tag) => (
               <li
                 key={tag}
-                className="text-[14px] px-[14px] py-2 border border-line-strong rounded-full text-ink-soft bg-bg-soft hover:bg-lemon hover:text-ink hover:border-lemon-deep transition cursor-default"
+                className="text-[14px] px-[14px] py-2 border border-line-strong rounded-full text-ink-soft bg-bg-soft hover:bg-coral-soft hover:text-coral-deep hover:border-coral transition cursor-default"
               >
                 {tag}
               </li>

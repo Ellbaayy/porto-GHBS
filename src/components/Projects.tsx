@@ -70,7 +70,7 @@ export function Projects() {
             className={cn(
               "w-14 h-14 self-center rounded-full border border-line bg-bg-soft",
               "text-ink font-mono text-[20px] flex items-center justify-center",
-              "hover:bg-cobalt hover:text-white hover:border-cobalt transition",
+              "hover:bg-ink hover:text-bg hover:border-ink transition",
               "disabled:opacity-35 disabled:cursor-not-allowed",
             )}
           >
@@ -132,7 +132,7 @@ export function Projects() {
             className={cn(
               "w-14 h-14 self-center rounded-full border border-line bg-bg-soft",
               "text-ink font-mono text-[20px] flex items-center justify-center",
-              "hover:bg-cobalt hover:text-white hover:border-cobalt transition",
+              "hover:bg-ink hover:text-bg hover:border-ink transition",
               "disabled:opacity-35 disabled:cursor-not-allowed",
             )}
           >

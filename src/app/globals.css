@@ -4,38 +4,39 @@
    Theme tokens — clean white, sage accent, editorial type pairing
 ---------------------------------------------------------------- */
 :root {
-  --bg: #121214;
-  --bg-soft: #18181b;
-  --bg-warm: #202024;
-  --ink: #e4e4e7;
-  --ink-soft: #a1a1aa;
-  --muted: #8f8f98;
-  --line: #27272a;
-  --line-strong: #3f3f46;
+  /* Hangat & kalem — abu-abu kecoklatan + cream */
+  --bg: #181512;
+  --bg-soft: #201c17;
+  --bg-warm: #2a251e;
+  --ink: #ece3d0;
+  --ink-soft: #c9bfa9;
+  --muted: #a0967f;
+  --line: #322c23;
+  --line-strong: #4d4434;
 
-  /* Anchor palette — calm nature */
-  --accent: #5a7a4a;
-  --accent-deep: #3f5a33;
-  --accent-soft: #e7ede1;
-  --dark: #14130f;
-  --dark-ink: #f4f1ea;
+  /* Anchor — caramel hangat */
+  --accent: #c69a5f;
+  --accent-deep: #a97c42;
+  --accent-soft: #3d3120;
+  --dark: #0f0d09;
+  --dark-ink: #ece3d0;
 
-  /* Pop palette — Nyentrik, loud, bold */
-  --coral:      #ff0055;
-  --coral-deep: #ff3377;
-  --coral-soft: #4d001a;
+  /* Aksen kalem — keluarga earthy (coklat · taupe · cream · caramel) */
+  --coral:      #cfa163;
+  --coral-deep: #dfbd88;
+  --coral-soft: #382b1a;
 
-  --lemon:      #ffff00;
-  --lemon-deep: #ffea00;
-  --lemon-soft: #333300;
+  --lemon:      #e8dcbd;
+  --lemon-deep: #f1e7cf;
+  --lemon-soft: #3d3621;
 
-  --cobalt:      #00ffcc;
-  --cobalt-deep: #33ffdd;
-  --cobalt-soft: #003329;
+  --cobalt:      #ab9c80;
+  --cobalt-deep: #c9bb9e;
+  --cobalt-soft: #2d2820;
 
-  --plum:      #ff00ff;
-  --plum-deep: #ff33ff;
-  --plum-soft: #4d004d;
+  --plum:      #bf8452;
+  --plum-deep: #d8a775;
+  --plum-soft: #2f2113;
 }
 
 @theme inline {

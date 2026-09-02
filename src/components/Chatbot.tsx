@@ -113,7 +113,7 @@ export function Chatbot() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative flex items-center gap-2.5 px-5 py-3.5 bg-ink text-white border border-cobalt rounded-full shadow-[0_10px_30px_rgba(0,255,204,0.25)] hover:border-coral hover:shadow-[0_10px_30px_rgba(255,0,85,0.3)] hover:-translate-y-0.5 transition-all duration-300 font-mono text-[12px] font-medium tracking-[0.04em] cursor-pointer"
+          className="group relative flex items-center gap-2.5 px-5 py-3.5 bg-ink text-bg border border-line-strong rounded-full shadow-[0_10px_30px_rgba(79,59,34,0.35)] hover:border-accent hover:shadow-[0_10px_30px_rgba(79,59,34,0.5)] hover:-translate-y-0.5 transition-all duration-300 font-mono text-[12px] font-medium tracking-[0.04em] cursor-pointer"
           aria-label="Open AI Chat"
         >
           <span className="absolute -top-1 -right-1 w-3 h-3 bg-coral rounded-full animate-ping" />
@@ -168,7 +168,7 @@ export function Chatbot() {
                   <div
                     className={`px-4 py-3 leading-relaxed ${
                       m.role === "user"
-                        ? "bg-ink text-white border border-ink rounded-2xl rounded-tr-sm"
+                        ? "bg-ink text-bg border border-ink rounded-2xl rounded-tr-sm"
                         : "bg-bg text-ink border border-line rounded-2xl rounded-tl-sm"
                     }`}
                   >
@@ -232,7 +232,7 @@ export function Chatbot() {
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="w-10 h-10 rounded-full bg-cobalt text-bg flex items-center justify-center hover:bg-coral transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-cobalt shrink-0 cursor-pointer"
+              className="w-10 h-10 rounded-full bg-accent text-bg flex items-center justify-center hover:bg-accent-deep transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-cobalt shrink-0 cursor-pointer"
               aria-label="Send message"
             >
               <Send className="w-4 h-4" />

@@ -48,7 +48,7 @@ export function Hero() {
             <div className="flex flex-wrap gap-3.5">
               <a
                 href="#projects"
-                className="inline-flex items-center justify-center px-[22px] py-[14px] text-[14px] font-medium rounded-full bg-ink text-white hover:bg-accent-deep hover:-translate-y-px transition"
+                className="inline-flex items-center justify-center px-[22px] py-[14px] text-[14px] font-medium rounded-full bg-ink text-bg hover:bg-accent-deep hover:-translate-y-px transition"
               >
                 View Projects →
               </a>
@@ -74,26 +74,24 @@ export function Hero() {
               <span className="text-[12px] text-coral-deep/80">{heroStats[0].foot}</span>
             </div>
 
-            <div className="bg-cobalt border border-cobalt rounded-[18px] p-[22px] flex flex-col gap-1.5 hover:bg-cobalt-deep transition">
-              <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-white/70">
+            <div className="bg-cobalt-soft border border-cobalt/40 rounded-[18px] p-[22px] flex flex-col gap-1.5 hover:border-cobalt-deep transition">
+              <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-cobalt-deep">
                 {heroStats[1].label}
               </span>
-              <span className="font-serif text-[clamp(24px,2.5vw,32px)] leading-none text-white">
+              <span className="font-serif text-[clamp(24px,2.5vw,32px)] leading-none text-cobalt-deep">
                 {heroStats[1].display}
               </span>
-              <span className="text-[12px] text-white/65">{heroStats[1].foot}</span>
+              <span className="text-[12px] text-cobalt-deep/80">{heroStats[1].foot}</span>
             </div>
 
-            <div className="bg-lemon border border-lemon-deep rounded-[18px] p-[22px] flex flex-col gap-1.5 hover:bg-lemon-deep transition group">
-              <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-lemon-deep group-hover:text-ink transition">
+            <div className="bg-lemon-soft border border-lemon/50 rounded-[18px] p-[22px] flex flex-col gap-1.5 hover:border-lemon-deep transition">
+              <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-lemon-deep">
                 {heroStats[2].label}
               </span>
-              <span className="font-serif text-[clamp(40px,5vw,64px)] leading-none text-lemon-deep group-hover:text-ink transition">
+              <span className="font-serif text-[clamp(40px,5vw,64px)] leading-none text-lemon-deep">
                 {heroStats[2].display}
               </span>
-              <span className="text-[12px] text-lemon-deep/90 group-hover:text-ink/80 transition">
-                {heroStats[2].foot}
-              </span>
+              <span className="text-[12px] text-lemon-deep/85">{heroStats[2].foot}</span>
             </div>
           </aside>
         </div>
