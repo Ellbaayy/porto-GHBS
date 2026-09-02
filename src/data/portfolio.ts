@@ -2,7 +2,7 @@ export const profile = {
   name: "Gesang Hemas Bayu Sekti",
   short: "Gesang Hemas Bayu Sekti.",
   initials: "GHBS",
-  instagramHandle: "@gesang.bayu",
+  instagramHandle: "@ellbaayy",
   email: "[email protected]",
   tagline: "Personal Portfolio · 2026",
   summary:
@@ -195,6 +195,6 @@ export const contact = {
     { label: "Email", value: "[email protected]", href: "mailto:[email protected]" },
     { label: "GitHub", value: "github.com/Ellbaayy", href: "https://github.com/Ellbaayy" },
     { label: "LinkedIn", value: "linkedin.com/in/gesang-hemas-bayu-sekti", href: "https://linkedin.com/in/gesang-hemas-bayu-sekti-01250737b" },
-    { label: "Instagram", value: "@gesang.bayu", href: "https://instagram.com/gesang.bayu" },
+    { label: "Instagram", value: "@ellbaayy", href: "https://instagram.com/ellbaayy" },
   ],
 };

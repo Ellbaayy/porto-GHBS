@@ -63,7 +63,7 @@ export function TopNav() {
 
         <div className="ml-auto md:ml-0 flex items-center gap-2">
           <a
-            href="https://instagram.com/gesang.bayu"
+            href="https://instagram.com/ellbaayy"
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex text-[13px] px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-cobalt hover:bg-cobalt-soft hover:text-cobalt-deep transition"
@@ -101,7 +101,7 @@ export function TopNav() {
             ))}
             <li className="pt-4">
               <a
-                href="https://instagram.com/gesang.bayu"
+                href="https://instagram.com/ellbaayy"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={close}
