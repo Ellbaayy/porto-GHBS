@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { profile } from "@/data/portfolio";
-import { cn } from "@/lib/utils";
 
 const links = [
   { href: "#hero", label: "Home" },
@@ -15,28 +14,13 @@ const links = [
 ];
 
 export function TopNav() {
-  const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Close the mobile menu when a link is picked, or when resizing up to desktop
+  // Close the mobile menu when a link is picked
   const close = () => setOpen(false);
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 backdrop-blur-md transition-colors",
-        scrolled
-          ? "bg-bg/80 border-b border-line shadow-sm"
-          : "bg-transparent border-b border-line/40",
-      )}
-    >
+    <header className="sticky top-0 z-50 bg-transparent">
       <nav className="max-w-[1240px] mx-auto px-6 md:px-10 lg:px-14 py-[18px] flex items-center gap-7">
         <a
           href="#hero"
@@ -44,7 +28,7 @@ export function TopNav() {
           className="font-mono text-[16px] font-bold tracking-[0.04em] text-ink hover:opacity-70 transition"
         >
           {profile.initials}
-          <span className="text-cobalt">.</span>
+          <span className="text-accent">.</span>
         </a>
 
         <ul className="hidden md:flex items-center gap-[22px] ml-auto text-[14px] font-medium text-ink">
@@ -52,10 +36,10 @@ export function TopNav() {
             <li key={l.href}>
               <a
                 href={l.href}
-                className="relative py-1.5 hover:text-cobalt transition-colors group"
+                className="relative py-1.5 hover:text-accent transition-colors group"
               >
                 {l.label}
-                <span className="absolute left-0 -bottom-0.5 h-[2px] bg-cobalt transition-all w-0 group-hover:w-full" />
+                <span className="absolute left-0 -bottom-0.5 h-[2px] bg-accent transition-all w-0 group-hover:w-full" />
               </a>
             </li>
           ))}
@@ -66,7 +50,7 @@ export function TopNav() {
             href="https://instagram.com/ellbaayy"
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-flex text-[13px] px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-cobalt hover:bg-cobalt-soft hover:text-cobalt-deep transition"
+            className="hidden sm:inline-flex text-[13px] px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-accent hover:bg-accent-soft hover:text-ink transition"
           >
             {profile.instagramHandle}
           </a>
@@ -77,23 +61,23 @@ export function TopNav() {
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-label={open ? "Close menu" : "Open menu"}
-            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-line-strong text-ink hover:border-cobalt hover:text-cobalt transition"
+            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-line-strong text-ink hover:border-accent transition"
           >
             {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
       </nav>
 
-      {/* Mobile dropdown panel */}
+      {/* Mobile dropdown panel — solid tipis biar menu tetap kebaca */}
       {open && (
-        <div className="md:hidden border-t border-line bg-bg/95 backdrop-blur-md">
+        <div className="md:hidden bg-bg/95 backdrop-blur-md">
           <ul className="max-w-[1240px] mx-auto px-6 py-4 flex flex-col">
             {links.map((l) => (
-              <li key={l.href} className="border-b border-line/50 last:border-b-0">
+              <li key={l.href} className="last:border-b-0">
                 <a
                   href={l.href}
                   onClick={close}
-                  className="block py-3.5 text-[15px] font-medium text-ink hover:text-cobalt transition-colors"
+                  className="block py-3.5 text-[15px] font-medium text-ink hover:text-accent transition-colors"
                 >
                   {l.label}
                 </a>
@@ -105,7 +89,7 @@ export function TopNav() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={close}
-                className="inline-flex text-[13px] px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-cobalt hover:bg-cobalt-soft hover:text-cobalt-deep transition"
+                className="inline-flex text-[13px] px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-accent hover:bg-accent-soft hover:text-ink transition"
               >
                 {profile.instagramHandle}
               </a>
