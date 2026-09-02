@@ -86,7 +86,7 @@ html, body {
       rgba(18,15,10,0.16) 35%,
       rgba(18,15,10,0.26) 70%,
       rgba(18,15,10,0.34) 100%),
-    url("/scroll-scene.svg") center top / 100% 700vh no-repeat,
+    url("/scroll-scene.svg") center top / cover no-repeat,
     var(--bg);
   color: var(--ink);
   font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;

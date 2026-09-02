@@ -5,7 +5,6 @@ import { TopNav } from "@/components/TopNav";
 import { Footer } from "@/components/Footer";
 import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { Chatbot } from "@/components/Chatbot";
-import { AmbientBackground } from "@/components/AmbientBackground";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -40,7 +39,6 @@ export default function RootLayout({
       <body
         className="bg-bg text-ink min-h-screen flex flex-col"
       >
-        <AmbientBackground />
         <TopNav />
         <main className="relative flex-1 z-10">{children}</main>
         <Footer />
