@@ -73,13 +73,16 @@
 }
 
 html, body {
-  /* Wallpaper elegan (glow karamel hangat + grain) + overlay gelap tipis
-     biar kontras teks tetap aman + base color */
+  /* Continuous scroll scene: background ikut scroll — "bercerita" dari
+     hills (hero) -> falls -> cavern -> open -> sea (contact) */
   background:
-    radial-gradient(ellipse at center, rgba(20,17,13,0.12) 0%, rgba(20,17,13,0.45) 100%),
-    url("/wallpaper.svg") center / cover no-repeat fixed,
+    linear-gradient(to bottom,
+      rgba(18,15,10,0.10) 0%,
+      rgba(18,15,10,0.16) 35%,
+      rgba(18,15,10,0.26) 70%,
+      rgba(18,15,10,0.34) 100%),
+    url("/scroll-scene.svg") center top / 100% auto no-repeat,
     var(--bg);
-  background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
