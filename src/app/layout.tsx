@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { TopNav } from "@/components/TopNav";
 import { Footer } from "@/components/Footer";
-import { RevealOnScroll } from "@/components/RevealOnScroll";
 import { Chatbot } from "@/components/Chatbot";
+import { SceneTrack } from "@/components/SceneTrack";
 
-const inter = Inter({
-  variable: "--font-inter",
+const ibmPlex = IBM_Plex_Sans({
+  variable: "--body",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600"],
 });
 
 const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
+  variable: "--display",
   subsets: ["latin"],
   weight: "400",
-  style: ["normal", "italic"],
+  style: ["normal"],
 });
 
 const jetbrains = JetBrains_Mono({
-  variable: "--font-jetbrains",
+  variable: "--mono",
   subsets: ["latin"],
   weight: ["400", "500"],
 });
@@ -37,12 +37,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className="bg-bg text-ink min-h-screen flex flex-col"
+        className={`${ibmPlex.variable} ${instrumentSerif.variable} ${jetbrains.variable} bg-paper text-ink min-h-screen flex flex-col font-sans`}
       >
+        <SceneTrack />
         <TopNav />
-        <main className="relative flex-1 z-10">{children}</main>
+        <main className="relative flex-1 z-[1]">{children}</main>
         <Footer />
-        <RevealOnScroll />
         <Chatbot />
       </body>
     </html>

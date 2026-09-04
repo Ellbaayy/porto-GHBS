@@ -1,69 +1,48 @@
 import { journey } from "@/data/portfolio";
+import { scenes } from "@/data/scenes";
 import { cn } from "@/lib/utils";
-import type { CSSProperties } from "react";
-
-const dotColors = ["var(--coral)", "var(--cobalt)", "var(--plum)", "var(--lemon-deep)"];
-const bulletColors = ["var(--coral)", "var(--cobalt)", "var(--plum)", "var(--lemon-deep)"];
-const yearColors = [
-  { bg: "bg-coral-soft", text: "text-coral-deep" },
-  { bg: "bg-cobalt-soft", text: "text-cobalt-deep" },
-  { bg: "bg-plum-soft", text: "text-plum-deep" },
-  { bg: "bg-lemon", text: "text-ink" },
-];
+import { Container } from "@/components/ui/Container";
+import { Scene } from "@/components/Scene";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Stagger } from "@/components/motion/Stagger";
+import { Reveal } from "@/components/motion/Reveal";
 
 export function Journey() {
   return (
-    <section id="journey" className="slide-section">
-      <div className="max-w-[1240px] mx-auto px-6 md:px-10 lg:px-14">
-        <header className="section-head mb-12 md:mb-14">
-          <span className="section-num section-num-lemon">05</span>
-          <h2 className="section-title text-[clamp(28px,4vw,44px)]">My journey</h2>
-        </header>
+    <section id="journey" className="scene-host region-paper3 relative isolate overflow-hidden py-20 md:py-28">
+      <Scene scene={scenes.journey} />
+      <Container>
+        <SectionHeader title="My journey" meta="so far" />
 
-        <ol className="relative grid gap-2 pl-6 border-l-2 border-line">
-          {journey.map((j, i) => {
+        <Stagger gap={0.1}>
+          <ol className="relative grid border-l border-rule pl-6">
+          {journey.map((j) => {
             const isActive = j.kind === "active";
             const isFuture = j.kind === "future";
-            const dotColor = isActive
-              ? "var(--coral)"
-              : isFuture
-                ? "var(--ink)"
-                : dotColors[i % dotColors.length];
-            const bulletColor = bulletColors[i % bulletColors.length];
-
             return (
-              <li
-                key={`${j.year}-${j.heading}`}
-                className="relative py-[18px] pl-4 timeline-dot"
-                style={
-                  {
-                    "--dot-color": dotColor,
-                    "--dot-ring": isActive ? "var(--coral-soft)" : "transparent",
-                    "--bullet-color": bulletColor,
-                  } as CSSProperties
-                }
-              >
+              <li key={`${j.year}-${j.heading}`} data-stagger-item className="relative py-[22px]">
+                <span
+                  aria-hidden="true"
+                  className="absolute -left-[27px] top-[30px] w-2 h-2 rounded-full"
+                  style={{
+                    background: isActive ? "var(--accent)" : isFuture ? "var(--ink)" : "var(--muted)",
+                  }}
+                />
                 <span
                   className={cn(
-                    "inline-block font-mono text-[13px] px-2.5 py-1 rounded-md mb-2.5",
-                    isFuture
-                      ? "bg-ink text-bg"
-                      : isActive
-                        ? "bg-coral text-bg"
-                        : `${yearColors[i % yearColors.length].bg} ${yearColors[i % yearColors.length].text}`,
+                    "inline-block font-mono text-[13px] tabular mb-2.5",
+                    isActive ? "text-accent" : isFuture ? "text-ink" : "text-muted",
                   )}
                 >
                   {j.year}
+                  {isActive ? " · now" : ""}
                 </span>
-                <div className="text-ink">
+                <div>
                   <strong className="text-[17px] text-ink">{j.heading}</strong>
                   {j.bullets && (
-                    <ul className="mt-1.5 grid gap-1">
+                    <ul className="mt-2 grid gap-1.5">
                       {j.bullets.map((b) => (
-                        <li
-                          key={b}
-                          className="relative pl-[18px] text-ink-soft text-[15px] before:content-[''] before:absolute before:left-0 before:top-[11px] before:w-2 before:h-[1.5px] before:bg-[var(--bullet-color)]"
-                        >
+                        <li key={b} className="text-ink-2 text-[15px] leading-relaxed">
                           {b}
                         </li>
                       ))}
@@ -73,20 +52,20 @@ export function Journey() {
               </li>
             );
           })}
-        </ol>
+          </ol>
+        </Stagger>
 
-        {/* Philosophy */}
-        <div className="mt-12 md:mt-20 p-8 md:p-14 bg-cobalt-soft text-cobalt-deep text-center rounded-[28px] shadow-[0_30px_60px_-30px_rgba(79,59,34,0.55)]">
-          <p className="font-serif italic text-[clamp(28px,3.5vw,44px)] leading-[1.2] text-ink m-0 mb-[18px]">
-            &ldquo;Learn. Build. Experiment. Innovate.&rdquo;
+        <Reveal className="mt-12 md:mt-16 max-w-[52ch]">
+          <p className="font-display text-[clamp(1.6rem,2.6vw,2.25rem)] leading-[1.25] text-ink m-0 mb-5">
+            Learn. Build. Experiment. Innovate.
           </p>
-          <p className="max-w-[60ch] mx-auto text-cobalt-deep/85 text-[15px]">
+          <p className="text-ink-2 text-[15px] leading-relaxed">
             I believe the best way to understand technology is not only by studying it, but by
-            building with it. Every project is an opportunity to learn something new, experiment
-            with an idea, and turn a problem into a solution.
+            building with it. Every project is a chance to learn something new, test an idea,
+            and             turn a problem into a solution.
           </p>
-        </div>
-      </div>
+        </Reveal>
+      </Container>
     </section>
   );
 }

@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { profile } from "@/data/portfolio";
 
 const links = [
-  { href: "#hero", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#tech", label: "Stack" },
   { href: "#projects", label: "Projects" },
@@ -15,83 +14,69 @@ const links = [
 
 export function TopNav() {
   const [open, setOpen] = useState(false);
+  const [atTop, setAtTop] = useState(true);
 
-  // Close the mobile menu when a link is picked
+  useEffect(() => {
+    const onScroll = () => setAtTop(window.scrollY <= 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   const close = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-transparent">
-      <nav className="max-w-[1240px] mx-auto px-6 md:px-10 lg:px-14 py-[18px] flex items-center gap-7">
+    <header
+      className={`fixed top-0 inset-x-0 z-40 transition-colors duration-300 ${
+        atTop ? "bg-transparent" : "bg-region-warm/85 backdrop-blur-sm border-b border-rule"
+      }`}
+    >
+      <nav className="max-w-[1240px] mx-auto px-6 md:px-10 lg:px-14 py-6 flex items-center justify-between">
         <a
           href="#hero"
           onClick={close}
-          className="font-mono text-[16px] font-bold tracking-[0.04em] text-ink hover:opacity-70 transition"
+          className="font-display text-[20px] text-ink hover:text-accent transition-colors"
         >
-          {profile.initials}
-          <span className="text-accent">.</span>
+          {profile.short}
         </a>
 
-        <ul className="hidden md:flex items-center gap-[22px] ml-auto text-[14px] font-medium text-ink">
-          {links.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                className="relative py-1.5 hover:text-accent transition-colors group"
-              >
-                {l.label}
-                <span className="absolute left-0 -bottom-0.5 h-[2px] bg-accent transition-all w-0 group-hover:w-full" />
-              </a>
-            </li>
-          ))}
-        </ul>
+        {/* Desktop — edge aligned, CTA only */}
+        <a
+          href="#contact"
+          className="hidden md:inline-flex btn-outline"
+        >
+          Say hello →
+        </a>
 
-        <div className="ml-auto md:ml-0 flex items-center gap-2">
-          <a
-            href="https://instagram.com/ellbaayy"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex text-[13px] px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-accent hover:bg-accent-soft hover:text-ink transition"
-          >
-            {profile.instagramHandle}
-          </a>
-
-          {/* Mobile menu toggle */}
-          <button
-            type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-label={open ? "Close menu" : "Open menu"}
-            className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-line-strong text-ink hover:border-accent transition"
-          >
-            {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
+        {/* Mobile — menu trigger */}
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          aria-expanded={open}
+          aria-label={open ? "Close menu" : "Open menu"}
+          className="md:hidden inline-flex items-center justify-center w-11 h-11 rounded-md border border-rule text-ink hover:text-accent transition-colors"
+        >
+          {open ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+        </button>
       </nav>
 
-      {/* Mobile dropdown panel — solid tipis biar menu tetap kebaca */}
       {open && (
-        <div className="md:hidden bg-bg/95 backdrop-blur-md">
+        <div className="md:hidden bg-region-warm/95 backdrop-blur-md border-b border-rule">
           <ul className="max-w-[1240px] mx-auto px-6 py-4 flex flex-col">
             {links.map((l) => (
-              <li key={l.href} className="last:border-b-0">
+              <li key={l.href} className="border-b border-rule last:border-b-0">
                 <a
                   href={l.href}
                   onClick={close}
-                  className="block py-3.5 text-[15px] font-medium text-ink hover:text-accent transition-colors"
+                  className="block py-3.5 font-body text-[15px] text-ink hover:text-accent transition-colors"
                 >
                   {l.label}
                 </a>
               </li>
             ))}
-            <li className="pt-4">
-              <a
-                href="https://instagram.com/ellbaayy"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={close}
-                className="inline-flex text-[13px] px-[14px] py-2 border border-line-strong rounded-full text-ink hover:border-accent hover:bg-accent-soft hover:text-ink transition"
-              >
-                {profile.instagramHandle}
+            <li className="pt-4 pb-2">
+              <a href="#contact" onClick={close} className="btn-outline">
+                Say hello →
               </a>
             </li>
           </ul>

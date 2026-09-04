@@ -1,264 +1,172 @@
 @import "tailwindcss";
+@import "../../tokens.css";
 
-/* ----------------------------------------------------------------
-   Theme tokens — clean white, sage accent, editorial type pairing
----------------------------------------------------------------- */
-:root {
-  /* Hangat & kalem — abu-abu kecoklatan + cream */
-  --bg: #181512;
-  --bg-soft: #201c17;
-  --bg-warm: #2a251e;
-  --ink: #ece3d0;
-  --ink-soft: #c9bfa9;
-  --muted: #a0967f;
-  --line: #322c23;
-  --line-strong: #4d4434;
-
-  /* Anchor — caramel hangat */
-  --accent: #c69a5f;
-  --accent-deep: #a97c42;
-  --accent-soft: #3d3120;
-  --dark: #0f0d09;
-  --dark-ink: #ece3d0;
-
-  /* Aksen kalem — keluarga earthy (coklat · taupe · cream · caramel) */
-  --coral:      #cfa163;
-  --coral-deep: #dfbd88;
-  --coral-soft: #382b1a;
-
-  --lemon:      #e8dcbd;
-  --lemon-deep: #f1e7cf;
-  --lemon-soft: #3d3621;
-
-  --cobalt:      #ab9c80;
-  --cobalt-deep: #c9bb9e;
-  --cobalt-soft: #2d2820;
-
-  --plum:      #bf8452;
-  --plum-deep: #d8a775;
-  --plum-soft: #2f2113;
-}
+/* ================================================================
+   Hallmark · genre: editorial · macrostructure: Letter · theme: Newsprint (dark)
+   paper: oklch(14% 0.010 65) · accent: oklch(72% 0.14 65) warm amber
+   display: Instrument Serif · body: IBM Plex Sans · outlier: JetBrains Mono
+   nav: N9 edge-aligned · footer: Ft6 letter close
+   ================================================================ */
 
 @theme inline {
-  --color-bg: var(--bg);
-  --color-bg-soft: var(--bg-soft);
-  --color-bg-warm: var(--bg-warm);
-  --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
-  --color-muted: var(--muted);
-  --color-line: var(--line);
-  --color-line-strong: var(--line-strong);
-  --color-accent: var(--accent);
-  --color-accent-deep: var(--accent-deep);
-  --color-accent-soft: var(--accent-soft);
-  --color-dark: var(--dark);
-  --color-dark-ink: var(--dark-ink);
+  --color-paper:    var(--paper);
+  --color-paper-2:  var(--paper-2);
+  --color-paper-3:  var(--paper-3);
+  --color-region-warm:   var(--region-warm);
+  --color-region-coral:  var(--region-coral);
+  --color-region-cobalt: var(--region-cobalt);
+  --color-region-plum:   var(--region-plum);
+  --color-ink:      var(--ink);
+  --color-ink-2:    var(--ink-2);
+  --color-rule:     var(--rule);
+  --color-muted:    var(--muted);
+  --color-accent:   var(--accent);
+  --color-accent2:  var(--accent-2);
+  --color-focus:    var(--focus);
+  --color-coral:    var(--coral);
+  --color-cobalt:   var(--cobalt);
+  --color-plum:     var(--plum);
 
-  --color-coral: var(--coral);
-  --color-coral-deep: var(--coral-deep);
-  --color-coral-soft: var(--coral-soft);
-  --color-lemon: var(--lemon);
-  --color-lemon-deep: var(--lemon-deep);
-  --color-lemon-soft: var(--lemon-soft);
-  --color-cobalt: var(--cobalt);
-  --color-cobalt-deep: var(--cobalt-deep);
-  --color-cobalt-soft: var(--cobalt-soft);
-  --color-plum: var(--plum);
-  --color-plum-deep: var(--plum-deep);
-  --color-plum-soft: var(--plum-soft);
-
-  --font-sans: var(--font-inter);
-  --font-serif: var(--font-instrument-serif);
-  --font-mono: var(--font-jetbrains);
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-snap-type: y mandatory;
+  --font-display: var(--display);
+  --font-body:    var(--body);
+  --font-mono:    var(--mono);
+  --font-sans:    var(--body);
 }
 
 html, body {
-  /* Continuous scroll scene: background ikut scroll — "bercerita" dari
-     hills (hero) -> falls -> cavern -> open -> sea (contact) */
-  background:
-    linear-gradient(to bottom,
-      rgba(18,15,10,0.10) 0%,
-      rgba(18,15,10,0.16) 35%,
-      rgba(18,15,10,0.26) 70%,
-      rgba(18,15,10,0.34) 100%),
-    url("/scroll-scene.svg") center top / cover no-repeat,
-    var(--bg);
-  color: var(--ink);
-  font-family: var(--font-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
+  overflow-x: clip;
 }
 
-* { box-sizing: border-box; }
-
-/* Slide Deck Snap Class -------------------------------------------- */
-.slide-section {
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-  box-sizing: border-box;
-  padding-top: 5rem;
-  padding-bottom: 5rem;
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--body), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
 }
 
 ::selection {
-  background: var(--accent);
-  color: #fff;
+  background: var(--color-accent);
+  color: var(--color-paper);
 }
 
-/* Utilities used across the app ------------------------------------ */
-.font-serif { font-family: var(--font-serif), "Times New Roman", serif; }
-.font-mono  { font-family: var(--font-mono), ui-monospace, Menlo, monospace; }
+/* Typography helpers ---------------------------------------------- */
+.font-display { font-family: var(--font-display); }
+.font-mono    { font-family: var(--font-mono); }
 
-.section-num {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
+/* Display text must wrap long words — no horizontal scroll */
+.font-display, h1, h2, h3 {
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
-/* Per-section number colors */
-.section-num-coral   { color: var(--coral); }
-.section-num-lemon   { color: var(--lemon-deep); }
-.section-num-cobalt  { color: var(--cobalt); }
-.section-num-sage    { color: var(--accent-deep); }
-.section-num-plum    { color: var(--plum); }
 .section-title {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1;
-}
-.section-head {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 18px;
-}
-.section-meta {
-  margin-left: auto;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--muted);
+  letter-spacing: -0.015em;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
-/* Reveal-on-scroll animation -------------------------------------- */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px) scale(0.97);
-  filter: blur(6px);
-  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1), transform 1.1s cubic-bezier(0.16, 1, 0.3, 1), filter 1.1s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
-}
-.reveal.reveal-left,
-.reveal.reveal-right {
-  /* clean default — no blur / rotate for whole-section reveals */
-  filter: none;
-  transform: translateY(40px);
-}
-.reveal.is-visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  filter: blur(0px);
-}
-@media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; filter: none; transition: none; }
+/* Letter salutation ------------------------------------------------ */
+.letter-salutation {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.15;
+  font-style: normal;
+  color: var(--color-ink);
+  overflow-wrap: anywhere;
+  min-width: 0;
 }
 
-/* Custom thin scrollbar for project gallery ---------------------- */
-.gallery-scroll {
-  scrollbar-width: thin;
-  scrollbar-color: var(--line-strong) transparent;
+/* Hairline rule — the letter's divider vocabulary */
+.rule {
+  height: 1px;
+  background: var(--color-rule);
+  border: 0;
 }
-.gallery-scroll::-webkit-scrollbar { height: 8px; }
-.gallery-scroll::-webkit-scrollbar-thumb {
-  background: var(--line-strong);
-  border-radius: 4px;
-}
-.gallery-scroll::-webkit-scrollbar-track { background: transparent; }
 
-/* Marquee --------------------------------------------------------- */
-.marquee-track {
+/* Outline button — quiet, editorial */
+.btn-outline {
   display: inline-flex;
-  gap: 28px;
-  white-space: nowrap;
-  animation: marquee 28s linear infinite;
-  font-family: var(--font-serif);
-  font-size: clamp(20px, 2.5vw, 32px);
-  color: var(--ink-soft);
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  border: 1px solid var(--color-rule);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  border-radius: var(--radius-md);
+  transition: border-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+  text-decoration: none;
 }
-/* Cycling pop colors for marquee words */
-.marquee-track > span:nth-child(8n+1) { color: var(--accent-deep); }
-.marquee-track > span:nth-child(8n+2) { color: var(--coral); }
-.marquee-track > span:nth-child(8n+3) { color: var(--cobalt); }
-.marquee-track > span:nth-child(8n+4) { color: var(--plum); }
-.marquee-track > span:nth-child(8n+5) { color: var(--lemon-deep); }
-.marquee-track > span:nth-child(8n+6) { color: var(--coral-deep); }
-.marquee-track > span:nth-child(8n+7) { color: var(--plum-deep); }
-.marquee-track > span:nth-child(8n)   { color: var(--cobalt-deep); }
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track { animation: none; }
-}
+.btn-outline:hover { border-color: var(--color-muted); color: var(--color-accent); }
+.btn-outline:active { transform: translateY(1px); }
+.btn-outline:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* Ambient floating shapes ------------------------------------------ */
-@keyframes float {
-  0%, 100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-  50% {
-    transform: translate3d(var(--drift-x, 0px), var(--drift, 12px), 0)
-      rotate(var(--spin, 0deg));
-  }
-}
-
-.animate-float {
-  animation: float 10s ease-in-out infinite;
-}
-
-/* Highlighter effect for inline emphasized words ------------------- */
-.hl {
-  background-image: linear-gradient(180deg, transparent 55%, var(--lemon) 55%, var(--lemon) 92%, transparent 92%);
-  padding: 0 2px;
-  font-weight: 600;
-}
-.hl-coral   { background-image: linear-gradient(180deg, transparent 55%, var(--coral) 55%, var(--coral) 92%, transparent 92%); }
-.hl-cobalt  { background-image: linear-gradient(180deg, transparent 55%, var(--cobalt) 55%, var(--cobalt) 92%, transparent 92%); }
-.hl-plum    { background-image: linear-gradient(180deg, transparent 55%, var(--plum) 55%, var(--plum) 92%, transparent 92%); }
-.hl-ink     { background-image: linear-gradient(180deg, transparent 55%, var(--ink) 55%, var(--ink) 92%, transparent 92%); color: #fff; }
-
-/* Timeline dots use the CSS variables set per-item */
-.timeline-dot {
+/* Sign-off link — typographic CTA with a drawn underline */
+.cta-link {
   position: relative;
+  display: inline-block;
+  color: var(--color-accent);
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-style: normal;
+  padding-bottom: 2px;
 }
-.timeline-dot::before {
+.cta-link::after {
   content: "";
   position: absolute;
-  left: -31px;
-  top: 28px;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--dot-color);
-  border: 2px solid var(--dot-color);
-  box-shadow: 0 0 0 4px var(--dot-ring);
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0.4);
+  transform-origin: left;
+  transition: transform var(--dur-short) var(--ease-out);
+}
+.cta-link:hover::after { transform: scaleX(1); }
+
+/* Focus ring — appears instantly, never animates -------------------- */
+:where(a, button, [role="button"], input, textarea, select):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
-/* Subtle focus ring ------------------------------------------------- */
-:where(a, button, [role="button"]):focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 3px;
-  border-radius: 8px;
+/* Motion — respect reduced motion ---------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 150ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 150ms !important;
+  }
+}
+
+/* Tabular figures for metrics */
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Continuous scene panorama — region hosts -------------------------
+   Sections stay transparent so the fixed SceneTrack panorama shows
+   through. Each host carries its region colour in --region-bg, which is
+   only painted as a solid fallback under prefers-reduced-motion (when
+   the track is hidden and the static per-section Scene takes over). */
+.region-warm   { --region-bg: var(--region-warm); }
+.region-coral  { --region-bg: var(--region-coral); }
+.region-cobalt { --region-bg: var(--region-cobalt); }
+.region-plum   { --region-bg: var(--region-plum); }
+.region-paper2 { --region-bg: var(--paper-2); }
+.region-paper3 { --region-bg: var(--paper-3); }
+.scene-host { background: transparent; }
+.scene-section-img { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .scene-host { background: var(--region-bg); }
+  .scene-section-img { display: block; }
+  .scene-track { display: none; }
 }

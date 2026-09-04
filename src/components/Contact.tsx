@@ -1,61 +1,53 @@
 import { contact } from "@/data/portfolio";
-
-const linkColors = [
-  "var(--coral)",
-  "var(--cobalt)",
-  "var(--plum)",
-  "var(--lemon-deep)",
-];
+import { scenes } from "@/data/scenes";
+import { Container } from "@/components/ui/Container";
+import { Scene } from "@/components/Scene";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Stagger } from "@/components/motion/Stagger";
+import { Reveal } from "@/components/motion/Reveal";
 
 export function Contact() {
   return (
-    <section id="contact" className="slide-section">
-      <div className="max-w-[1240px] mx-auto px-6 md:px-10 lg:px-14">
-        <header className="section-head mb-12 md:mb-14">
-          <span className="section-num section-num-cobalt">06</span>
-          <h2 className="section-title text-[clamp(28px,4vw,44px)]">Get in touch</h2>
-        </header>
+    <section id="contact" className="scene-host region-coral relative isolate overflow-hidden py-20 md:py-28">
+      <Scene scene={scenes.contact} />
+      <Container>
+        <SectionHeader title="Get in touch" meta="open to collaboration" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-8 lg:gap-16 items-start">
-          <div>
-            <p className="font-serif text-[clamp(22px,2.2vw,30px)] leading-[1.35] text-ink m-0 mb-6">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-16 items-start">
+          <Reveal className="max-w-[52ch]">
+            <p className="font-display text-[clamp(1.4rem,2.3vw,1.9rem)] leading-[1.35] text-ink m-0 mb-5">
               {contact.intro}
             </p>
-            <p className="font-serif italic text-[18px] text-cobalt-deep border-l-[3px] border-cobalt pl-4 m-0">
-              &ldquo;{contact.vision}&rdquo;
+            <p className="text-ink-2 text-[15px] m-0 border-l-2 border-accent pl-4">
+              {contact.vision}
             </p>
-          </div>
+          </Reveal>
 
-          <ul className="grid border-t border-line">
-            {contact.links.map((l, i) => {
-              const accent = linkColors[i % linkColors.length];
-              return (
-                <li
-                  key={l.label}
-                  className="grid grid-cols-[120px_1fr] gap-[18px] items-center py-[22px] border-b border-line group"
+          <Stagger gap={0.08}>
+          <ul className="border-t border-rule">
+            {contact.links.map((l) => (
+              <li
+                key={l.label}
+                data-stagger-item
+                className="grid grid-cols-[110px_1fr] gap-4 items-center py-5 border-b border-rule"
+              >
+                <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted">
+                  {l.label}
+                </span>
+                <a
+                  href={l.href}
+                  target={l.href.startsWith("http") ? "_blank" : undefined}
+                  rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="text-[clamp(16px,1.6vw,20px)] text-ink hover:text-accent transition-colors"
                 >
-                  <span className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted">
-                    {l.label}
-                  </span>
-                  <a
-                    href={l.href}
-                    target={l.href.startsWith("http") ? "_blank" : undefined}
-                    rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    className="relative w-fit text-[clamp(18px,1.8vw,24px)] text-ink transition-colors"
-                    style={{ ["--link-color" as never]: accent }}
-                  >
-                    {l.value}
-                    <span
-                      className="absolute left-0 -bottom-0.5 h-[1.5px] transition-all w-0 group-hover:w-full"
-                      style={{ background: accent }}
-                    />
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+                  {l.value}
+                </a>
+              </li>
+            ))}
+            </ul>
+          </Stagger>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

@@ -2,21 +2,23 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import gsap from "gsap";
 import { projects, achievements } from "@/data/portfolio";
+import { scenes } from "@/data/scenes";
 import { cn } from "@/lib/utils";
+import { Container } from "@/components/ui/Container";
+import { Scene } from "@/components/Scene";
+import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Stagger } from "@/components/motion/Stagger";
 
-const tagPalettes = [
-  { bg: "bg-coral-soft", text: "text-coral-deep" },
-  { bg: "bg-cobalt-soft", text: "text-cobalt-deep" },
-  { bg: "bg-plum-soft", text: "text-plum-deep" },
-  { bg: "bg-lemon-soft", text: "text-lemon-deep" },
-];
-
-const yearPalettes = [
-  { bg: "bg-coral-soft", text: "text-coral-deep" },
-  { bg: "bg-cobalt-soft", text: "text-cobalt-deep" },
-  { bg: "bg-plum-soft", text: "text-plum-deep" },
-];
+const liftCard = (el: HTMLElement, y: number) => {
+  if (
+    !window.matchMedia("(prefers-reduced-motion: no-preference)").matches ||
+    !window.matchMedia("(pointer: fine)").matches
+  )
+    return;
+  gsap.to(el, { y, duration: 0.22, ease: "power2.out", overwrite: "auto" });
+};
 
 export function Projects() {
   const scrollerRef = useRef<HTMLDivElement | null>(null);
@@ -52,69 +54,58 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="slide-section">
-      <div className="max-w-[1240px] mx-auto px-6 md:px-10 lg:px-14">
-        <header className="section-head mb-12 md:mb-14">
-          <span className="section-num section-num-sage">03</span>
-          <h2 className="section-title text-[clamp(28px,4vw,44px)]">Featured projects</h2>
-          <span className="section-meta">04 selected · 2025 – 2026</span>
-        </header>
+    <section id="projects" className="scene-host region-paper2 relative isolate overflow-hidden py-20 md:py-28">
+      <Scene scene={scenes.projects} />
+      <Container>
+        <SectionHeader title="Selected projects" meta="four pieces of work" />
 
-        {/* Horizontal scroll gallery */}
-        <div className="grid grid-cols-[56px_1fr_56px] gap-3 items-stretch">
+        <div className="grid grid-cols-[0px_1fr_0px] sm:grid-cols-[40px_1fr_40px] gap-3 items-stretch">
           <button
             type="button"
             aria-label="Previous project"
             onClick={() => scrollBy(-1)}
             disabled={atStart}
             className={cn(
-              "w-14 h-14 self-center rounded-full border border-line bg-bg-soft",
-              "text-ink font-mono text-[20px] flex items-center justify-center",
-              "hover:bg-ink hover:text-bg hover:border-ink transition",
+              "hidden sm:flex w-10 h-10 self-center rounded-md border border-rule bg-paper",
+              "text-ink items-center justify-center",
+              "hover:text-accent hover:border-accent transition-colors",
               "disabled:opacity-35 disabled:cursor-not-allowed",
             )}
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-4 h-4" />
           </button>
 
-          <div
+          <Stagger
             ref={scrollerRef}
-            className="gallery-scroll grid grid-flow-col auto-cols-[minmax(320px,360px)] gap-5 overflow-x-auto snap-x snap-mandatory py-2 px-2 pb-6"
+            className="gallery-scroll grid grid-flow-col auto-cols-[minmax(280px,320px)] gap-5 overflow-x-auto snap-x snap-mandatory py-2 px-2 pb-6"
+            gap={0.08}
           >
-            {projects.map((p, i) => (
+            {projects.map((p) => (
               <article
                 key={p.index}
                 data-card
+                data-stagger-item
+                onMouseEnter={(e) => liftCard(e.currentTarget, -4)}
+                onMouseLeave={(e) => liftCard(e.currentTarget, 0)}
                 className={cn(
-                  "snap-start bg-bg-soft border border-line rounded-[18px] p-7",
-                  "min-h-[360px] flex flex-col relative",
-                  "hover:-translate-y-1 hover:border-cobalt hover:shadow-[0_20px_40px_-28px_rgba(20,19,15,0.35)]",
-                  "transition",
+                  "snap-start border border-rule rounded-lg p-6 min-h-[320px] flex flex-col relative bg-paper",
+                  "hover:border-accent transition-colors",
                 )}
               >
-                <span
-                  className={cn(
-                    "absolute top-6 right-6 font-mono text-[11px] uppercase tracking-[0.08em] px-2.5 py-1 rounded-full",
-                    tagPalettes[i % tagPalettes.length].bg,
-                    tagPalettes[i % tagPalettes.length].text,
-                  )}
-                >
-                  {p.tag}
+                <span className="font-mono text-[12px] text-muted tabular mb-4">
+                  {p.index} / {p.tag}
                 </span>
-                <span className="font-mono text-[12px] text-muted tracking-[0.08em] mb-3.5">
-                  {p.index}
-                </span>
-                <h3 className="font-serif text-[26px] leading-[1.15] font-normal text-ink m-0 mb-3.5">
+                <h3 className="font-display text-[24px] leading-[1.15] text-ink m-0 mb-3">
                   {p.title}
                 </h3>
-                <p className="text-ink-soft text-[14px] leading-relaxed m-0 mb-[18px] flex-1">
+                <p className="text-ink-2 text-[14px] leading-relaxed m-0 mb-[18px] flex-1">
                   {p.description}
                 </p>
                 <ul className="flex flex-wrap gap-1.5 mt-auto">
                   {p.stack.map((t) => (
                     <li
                       key={t}
-                      className="font-mono text-[11px] px-2 py-1 rounded-md bg-bg-soft text-ink-soft border border-line"
+                      className="font-mono text-[11px] px-2 py-1 rounded border border-rule text-ink-2"
                     >
                       {t}
                     </li>
@@ -122,7 +113,7 @@ export function Projects() {
                 </ul>
               </article>
             ))}
-          </div>
+          </Stagger>
 
           <button
             type="button"
@@ -130,48 +121,37 @@ export function Projects() {
             onClick={() => scrollBy(1)}
             disabled={atEnd}
             className={cn(
-              "w-14 h-14 self-center rounded-full border border-line bg-bg-soft",
-              "text-ink font-mono text-[20px] flex items-center justify-center",
-              "hover:bg-ink hover:text-bg hover:border-ink transition",
+              "hidden sm:flex w-10 h-10 self-center rounded-md border border-rule bg-paper",
+              "text-ink items-center justify-center",
+              "hover:text-accent hover:border-accent transition-colors",
               "disabled:opacity-35 disabled:cursor-not-allowed",
             )}
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Achievements */}
-        <div className="mt-14 md:mt-20 pt-7 border-t border-line">
-          <h3 className="font-mono text-[12px] uppercase tracking-[0.08em] text-muted font-medium m-0 mb-6">
+        <Stagger className="mt-14 md:mt-20 pt-7 border-t border-rule" gap={0.1}>
+          <h3 data-stagger-item className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted font-medium m-0 mb-6">
             Achievements
           </h3>
-          <ul className="grid gap-[18px]">
-            {achievements.map((a, i) => {
-              const palette = yearPalettes[i % yearPalettes.length];
-              return (
-                <li
-                  key={i}
-                  className="grid grid-cols-[90px_1fr] sm:gap-[22px] gap-2.5 items-start py-[18px] border-b border-line last:border-b-0"
-                >
-                  <span
-                    className={cn(
-                      "font-mono text-[13px] px-2.5 py-1 rounded-md w-fit",
-                      palette.bg,
-                      palette.text,
-                    )}
-                  >
-                    {a.year}
-                  </span>
-                  <div>
-                    <strong className="block text-[17px] mb-1 text-ink">{a.title}</strong>
-                    <p className="m-0 text-muted text-[14px]">{a.desc}</p>
-                  </div>
-                </li>
-              );
-            })}
+          <ul>
+            {achievements.map((a, i) => (
+              <li
+                key={i}
+                data-stagger-item
+                className="grid grid-cols-[80px_1fr] gap-5 items-start py-5 border-b border-rule last:border-b-0"
+              >
+                <span className="font-mono text-[13px] text-accent tabular">{a.year}</span>
+                <div>
+                  <strong className="block text-[16px] mb-1 text-ink">{a.title}</strong>
+                  <p className="m-0 text-muted text-[14px]">{a.desc}</p>
+                </div>
+              </li>
+            ))}
           </ul>
-        </div>
-      </div>
+        </Stagger>
+      </Container>
     </section>
   );
 }
