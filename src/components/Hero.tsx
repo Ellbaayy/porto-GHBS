@@ -1,15 +1,30 @@
+import Image from "next/image";
 import { profile, heroStats } from "@/data/portfolio";
 import { scenes } from "@/data/scenes";
 import { Container } from "@/components/ui/Container";
 import { Scene } from "@/components/Scene";
 import { Stagger } from "@/components/motion/Stagger";
+import { WatermelonWreath } from "@/components/WatermelonWreath";
 
 export function Hero() {
   return (
     <section id="hero" className="relative isolate overflow-hidden pt-32 md:pt-40 pb-16 md:pb-24">
       <Scene scene={scenes.hero} />
       <Container>
-        <Stagger className="max-w-[65ch]" gap={0.07}>
+        <div className="grid gap-12 md:grid-cols-[1fr_auto] md:items-center">
+          <figure className="relative justify-self-center w-44 h-44 md:w-60 md:h-60 md:order-2 shrink-0">
+            <Image
+              src="/images/misc/bayu-tw.jpeg"
+              alt="Portrait of Gesang Hemas Bayu Sekti"
+              width={480}
+              height={480}
+              sizes="(max-width: 768px) 176px, 240px"
+              priority
+              className="h-full w-full rounded-full object-cover"
+            />
+            <WatermelonWreath className="pointer-events-none absolute -inset-[14%]" />
+          </figure>
+          <Stagger className="max-w-[65ch] md:order-1" gap={0.07}>
           <p data-stagger-item className="letter-salutation">Hello, I&apos;m Gesang Hemas Bayu Sekti.</p>
 
           <div data-stagger-item className="rule mt-8 mb-8 max-w-[10rem]" />
@@ -32,6 +47,7 @@ export function Hero() {
             </span>
           </div>
         </Stagger>
+        </div>
       </Container>
     </section>
   );
