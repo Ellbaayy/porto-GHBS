@@ -36,11 +36,11 @@ export function Learning() {
             </table>
           </Reveal>
 
-          <Reveal as="aside" className="border border-rule rounded-lg p-6 bg-paper" delay={0.1}>
-            <h3 className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted font-medium m-0 mb-4">
+          <Reveal as="aside" className="border border-rule rounded-lg p-6" delay={0.1}>
+            <h3 className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted font-medium m-0 mb-4 text-safe">
               Exploring AI Agents
             </h3>
-            <p className="text-ink-2 text-[15px] m-0 mb-5 leading-relaxed">
+            <p className="text-ink-2 text-[15px] m-0 mb-5 leading-relaxed text-safe">
               I&apos;m exploring how AI agents can interact with tools, files, applications,
               and development environments to automate complex workflows.
             </p>
@@ -48,13 +48,13 @@ export function Learning() {
               {agentTopics.map((t) => (
                 <li
                   key={t}
-                  className="relative pl-4 text-[14px] text-ink before:content-[''] before:absolute before:left-0 before:top-[11px] before:w-2 before:h-[1px] before:bg-accent"
+                  className="relative pl-4 text-[14px] text-ink text-safe before:content-[''] before:absolute before:left-0 before:top-[11px] before:w-2 before:h-[1px] before:bg-accent"
                 >
                   {t}
                 </li>
               ))}
             </ul>
-            <p className="text-[13px] text-muted border-t border-rule pt-4 mt-2 leading-relaxed">
+            <p className="text-[13px] text-muted border-t border-rule pt-4 mt-2 leading-relaxed text-safe">
               The long-term goal is to build systems where an AI agent understands a project,
               interacts with its files and tools, executes tasks, tests the result, and
               improves the implementation.

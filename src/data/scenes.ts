@@ -9,7 +9,7 @@ export type SceneKey =
   | "footer";
 
 export interface SceneSpec {
-  /** Public path to the optimized scene image (WebP, ~1800px wide). */
+  /** Public path to the scene image (object-cover full-screen; optimizer serves size variants). */
   src: string;
   /**
    * Region-tinted gradient laid over the uniform scrim.
@@ -22,36 +22,36 @@ export interface SceneSpec {
 
 export const scenes: Record<SceneKey, SceneSpec> = {
   hero: {
-    src: "/images/nature/mountain-dawn.webp",
+    src: "/images/watermelon/tw-1.jpeg",
     tint: "bg-gradient-to-b from-paper/55 via-paper/20 to-paper/80",
     eager: true,
   },
   about: {
-    src: "/images/nature/misty-forest.webp",
+    src: "/images/watermelon/tw-2.jpeg",
     tint: "bg-gradient-to-b from-region-warm/50 via-paper/30 to-paper/75",
   },
   tech: {
-    src: "/images/nature/valley-fog.webp",
+    src: "/images/watermelon/tw-3.jpeg",
     tint: "bg-gradient-to-b from-region-coral/50 via-paper/30 to-paper/75",
   },
   projects: {
-    src: "/images/nature/sunbeam-forest.webp",
+    src: "/images/watermelon/tw-4.jpeg",
     tint: "bg-gradient-to-b from-paper-2/60 via-paper/30 to-paper/75",
   },
   learning: {
-    src: "/images/nature/starry-sky.webp",
+    src: "/images/watermelon/tw-5.jpeg",
     tint: "bg-gradient-to-b from-region-cobalt/55 via-paper/30 to-paper/75",
   },
   journey: {
-    src: "/images/nature/misty-lake.webp",
+    src: "/images/watermelon/tw-6.jpeg",
     tint: "bg-gradient-to-b from-paper-3/60 via-paper/30 to-paper/75",
   },
   contact: {
-    src: "/images/nature/dusk-beach.webp",
+    src: "/images/watermelon/tw-7.jpeg",
     tint: "bg-gradient-to-b from-region-coral/50 via-paper/30 to-paper/75",
   },
   footer: {
-    src: "/images/nature/night-mountains.webp",
+    src: "/images/watermelon/tw-8.jpeg",
     tint: "bg-gradient-to-b from-region-plum/50 via-paper/30 to-paper/80",
   },
 };

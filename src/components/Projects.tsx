@@ -66,7 +66,7 @@ export function Projects() {
             onClick={() => scrollBy(-1)}
             disabled={atStart}
             className={cn(
-              "hidden sm:flex w-10 h-10 self-center rounded-md border border-rule bg-paper",
+              "hidden sm:flex w-10 h-10 self-center rounded-md border border-rule text-safe",
               "text-ink items-center justify-center",
               "hover:text-accent hover:border-accent transition-colors",
               "disabled:opacity-35 disabled:cursor-not-allowed",
@@ -88,24 +88,24 @@ export function Projects() {
                 onMouseEnter={(e) => liftCard(e.currentTarget, -4)}
                 onMouseLeave={(e) => liftCard(e.currentTarget, 0)}
                 className={cn(
-                  "snap-start border border-rule rounded-lg p-6 min-h-[320px] flex flex-col relative bg-paper",
+                  "snap-start border border-rule rounded-lg p-6 min-h-[320px] flex flex-col relative",
                   "hover:border-accent transition-colors",
                 )}
               >
-                <span className="font-mono text-[12px] text-muted tabular mb-4">
+                <span className="font-mono text-[12px] text-muted tabular mb-4 text-safe">
                   {p.index} / {p.tag}
                 </span>
-                <h3 className="font-display text-[24px] leading-[1.15] text-ink m-0 mb-3">
+                <h3 className="font-display text-[24px] leading-[1.15] text-ink m-0 mb-3 text-safe">
                   {p.title}
                 </h3>
-                <p className="text-ink-2 text-[14px] leading-relaxed m-0 mb-[18px] flex-1">
+                <p className="text-ink-2 text-[14px] leading-relaxed m-0 mb-[18px] flex-1 text-safe">
                   {p.description}
                 </p>
                 <ul className="flex flex-wrap gap-1.5 mt-auto">
                   {p.stack.map((t) => (
                     <li
                       key={t}
-                      className="font-mono text-[11px] px-2 py-1 rounded border border-rule text-ink-2"
+                      className="font-mono text-[11px] px-2 py-1 rounded border border-rule text-ink-2 text-safe"
                     >
                       {t}
                     </li>
@@ -121,7 +121,7 @@ export function Projects() {
             onClick={() => scrollBy(1)}
             disabled={atEnd}
             className={cn(
-              "hidden sm:flex w-10 h-10 self-center rounded-md border border-rule bg-paper",
+              "hidden sm:flex w-10 h-10 self-center rounded-md border border-rule text-safe",
               "text-ink items-center justify-center",
               "hover:text-accent hover:border-accent transition-colors",
               "disabled:opacity-35 disabled:cursor-not-allowed",

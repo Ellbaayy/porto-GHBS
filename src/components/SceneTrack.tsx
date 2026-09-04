@@ -11,7 +11,7 @@ import { sceneOrder } from "@/data/scenes";
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 /**
- * Continuous nature panorama: all region photos stacked into one tall film
+ * Continuous scene panorama: all region photos stacked into one tall film
  * that drifts upward as the page scrolls (scrubbed, linear). Scrolling down
  * a section physically climbs the next frame, so every background flows into
  * the next instead of cutting — vertical direction, matching the scroll.
@@ -81,7 +81,7 @@ export function SceneTrack() {
         ))}
       </div>
       {/* uniform scrim for text contrast */}
-      <div className="absolute inset-0 bg-paper/55" />
+      <div className="absolute inset-0 bg-paper/35" />
       {/* single warm film grade — one world, one film */}
       <div className="absolute inset-0 bg-accent/10 mix-blend-overlay" />
     </div>

@@ -152,6 +152,15 @@ body {
 /* Tabular figures for metrics */
 .tabular { font-variant-numeric: tabular-nums; }
 
+/* text-safe — readability guard for text floating over scene photos.
+   A soft double dark shadow replaces the old solid card background,
+   keeping type legible even over the brightest frames. */
+.text-safe {
+  text-shadow:
+    0 1px 2px rgb(16 18 20 / 0.7),
+    0 0 12px rgb(16 18 20 / 0.4);
+}
+
 /* Continuous scene panorama — region hosts -------------------------
    Sections stay transparent so the fixed SceneTrack panorama shows
    through. Each host carries its region colour in --region-bg, which is
