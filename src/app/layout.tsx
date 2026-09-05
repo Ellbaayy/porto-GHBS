@@ -4,6 +4,7 @@ import "./globals.css";
 import { TopNav } from "@/components/TopNav";
 import { Footer } from "@/components/Footer";
 import { Chatbot } from "@/components/Chatbot";
+import { MusicPlayer } from "@/components/MusicPlayer";
 import { SceneTrack } from "@/components/SceneTrack";
 
 const ibmPlex = IBM_Plex_Sans({
@@ -50,6 +51,7 @@ export default function RootLayout({
         <main className="relative flex-1 z-[1]">{children}</main>
         <Footer />
         <Chatbot />
+        <MusicPlayer />
       </body>
     </html>
   );
