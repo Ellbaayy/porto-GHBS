@@ -89,6 +89,7 @@ export function Projects() {
                 onMouseLeave={(e) => liftCard(e.currentTarget, 0)}
                 className={cn(
                   "snap-start border border-rule rounded-lg p-6 min-h-[320px] flex flex-col relative",
+                  "shadow-[0_10px_30px_rgb(0_0_0/0.35)]",
                   "hover:border-accent transition-colors",
                 )}
               >
@@ -132,7 +133,7 @@ export function Projects() {
         </div>
 
         <Stagger className="mt-14 md:mt-20 pt-7 border-t border-rule" gap={0.1}>
-          <h3 data-stagger-item className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted font-medium m-0 mb-6">
+          <h3 data-stagger-item className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted font-medium m-0 mb-6 text-safe">
             Achievements
           </h3>
           <ul>
@@ -140,7 +141,7 @@ export function Projects() {
               <li
                 key={i}
                 data-stagger-item
-                className="grid grid-cols-[80px_1fr] gap-5 items-start py-5 border-b border-rule last:border-b-0"
+                className="grid grid-cols-[80px_1fr] gap-5 items-start py-5 border-b border-rule last:border-b-0 text-safe"
               >
                 <span className="font-mono text-[13px] text-accent tabular">{a.year}</span>
                 <div>

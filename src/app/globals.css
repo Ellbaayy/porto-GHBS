@@ -154,12 +154,14 @@ body {
 .tabular { font-variant-numeric: tabular-nums; }
 
 /* text-safe — readability guard for text floating over scene photos.
-   A soft double dark shadow replaces the old solid card background,
-   keeping type legible even over the brightest frames. */
+   A strong triple dark shadow replaces the old solid card background,
+   so type stays legible over the brightest frames without any solid
+   card — cards stay fully transparent. */
 .text-safe {
   text-shadow:
-    0 1px 2px rgb(16 18 20 / 0.7),
-    0 0 12px rgb(16 18 20 / 0.4);
+    0 1px 1px rgb(10 12 14 / 0.9),
+    0 2px 8px rgb(10 12 14 / 0.6),
+    0 0 24px rgb(10 12 14 / 0.45);
 }
 
 /* Continuous scene panorama — region hosts -------------------------
