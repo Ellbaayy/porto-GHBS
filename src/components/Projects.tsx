@@ -59,7 +59,7 @@ export function Projects() {
       <Container>
         <SectionHeader title="Selected projects" meta="four pieces of work" />
 
-        <div className="grid grid-cols-[0px_1fr_0px] sm:grid-cols-[40px_1fr_40px] gap-3 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-[40px_1fr_40px] gap-3 items-stretch">
           <button
             type="button"
             aria-label="Previous project"
@@ -67,6 +67,7 @@ export function Projects() {
             disabled={atStart}
             className={cn(
               "hidden sm:flex w-10 h-10 self-center rounded-md border border-rule text-safe",
+              "sm:col-start-1",
               "text-ink items-center justify-center",
               "hover:text-accent hover:border-accent transition-colors",
               "disabled:opacity-35 disabled:cursor-not-allowed",
@@ -77,7 +78,7 @@ export function Projects() {
 
           <Stagger
             ref={scrollerRef}
-            className="gallery-scroll grid grid-flow-col auto-cols-[minmax(280px,320px)] gap-5 overflow-x-auto snap-x snap-mandatory py-2 px-2 pb-6"
+            className="gallery-scroll grid grid-cols-1 sm:grid-cols-none sm:grid-flow-col sm:auto-cols-[minmax(280px,320px)] gap-5 min-w-0 sm:overflow-x-auto sm:snap-x sm:snap-mandatory py-2 px-2 pb-6 sm:col-start-2"
             gap={0.08}
           >
             {projects.map((p) => (
@@ -123,6 +124,7 @@ export function Projects() {
             disabled={atEnd}
             className={cn(
               "hidden sm:flex w-10 h-10 self-center rounded-md border border-rule text-safe",
+              "sm:col-start-3",
               "text-ink items-center justify-center",
               "hover:text-accent hover:border-accent transition-colors",
               "disabled:opacity-35 disabled:cursor-not-allowed",
