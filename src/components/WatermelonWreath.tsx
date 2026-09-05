@@ -5,12 +5,11 @@
  * Render absolutely over a square photo container (e.g. `-inset-[24%]`).
  * Purely decorative (aria-hidden); the photo itself carries the alt text.
  *
- * Two readable arcs (top + bottom, never mirrored) in connected Dancing
- * Script, sentence case so the joins actually join: "Viva la vida" in
- * white, "Watermelon" in rind green + "Sugar" in flesh red. Genuine 700
- * weight plus a thin same-color stroke (painted behind the fill) for extra
- * presence; the double drop-shadow keeps the lettering legible over the
- * brightest photo frames.
+ * Two readable arcs (top + bottom, never mirrored) in Righteous display
+ * type, sentence case: "Viva la vida" in cream, "Watermelon" in rind
+ * green + "Sugar" in flesh red. Genuine display presence plus a thin
+ * same-color stroke (painted behind the fill) for extra punch; the double
+ * drop-shadow keeps the lettering legible over the brightest photo frames.
  *
  * Eight watermelon slices circle the photo's edge just inside the letter
  * ring. Each faces a pseudo-random direction (deterministic from the
@@ -46,19 +45,19 @@ export function WatermelonWreath({ className }: { className?: string }) {
           >
             <path
               d="M -12 -8 Q 0 -16 12 -8 L 4 12 Q 0 14 -4 12 Z"
-              fill="#e5484d"
+              fill="#c9263f"
             />
             <path
               d="M -12 -8 Q 0 -16 12 -8"
               fill="none"
-              stroke="#eef3d8"
+              stroke="#f2e8ce"
               strokeWidth="5.5"
               strokeLinecap="round"
             />
             <path
               d="M -12 -8 Q 0 -16 12 -8"
               fill="none"
-              stroke="#2f9e44"
+              stroke="#4a8b57"
               strokeWidth="3"
               strokeLinecap="round"
             />
@@ -69,12 +68,12 @@ export function WatermelonWreath({ className }: { className?: string }) {
         </g>
       ))}
       <text
-        className="font-script"
-        fontSize="15"
-        fontWeight={700}
+        className="font-display"
+        fontSize="13"
+        fontWeight={400}
         fontStyle="normal"
-        letterSpacing="0.5"
-        fill="#f8f4ea"
+        letterSpacing="1.5"
+        fill="#fff8ea"
         stroke="currentColor"
         strokeWidth={1.1}
         paintOrder="stroke"
@@ -85,20 +84,20 @@ export function WatermelonWreath({ className }: { className?: string }) {
         </textPath>
       </text>
       <text
-        className="font-script"
-        fontSize="15"
-        fontWeight={700}
+        className="font-display"
+        fontSize="13"
+        fontWeight={400}
         fontStyle="normal"
-        letterSpacing="0.5"
+        letterSpacing="1.5"
         stroke="currentColor"
         strokeWidth={1.1}
         paintOrder="stroke"
       >
         <textPath href="#wm-ring-bottom" startOffset="50%" textAnchor="middle">
-          <tspan fill="#2f9e44" style={{ color: "#2f9e44" }}>
+          <tspan fill="#4a8b57" style={{ color: "#4a8b57" }}>
             Watermelon
           </tspan>
-          <tspan fill="#e5484d" style={{ color: "#e5484d" }} dx="5">
+          <tspan fill="#c9263f" style={{ color: "#c9263f" }} dx="5">
             Sugar
           </tspan>
         </textPath>

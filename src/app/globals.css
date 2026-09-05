@@ -2,35 +2,35 @@
 @import "../../tokens.css";
 
 /* ================================================================
-   Hallmark · genre: editorial · macrostructure: Letter · theme: Newsprint (dark)
-   paper: oklch(14% 0.010 65) · accent: oklch(72% 0.14 65) warm amber
-   display: Instrument Serif · body: IBM Plex Sans · outlier: JetBrains Mono
-   nav: N9 edge-aligned · footer: Ft6 letter close
+   Signal & Sound · genre: summer demo-tape · macrostructure: album sides
+   paper: oklch(95.5% 0.018 78) warm sand · accent: oklch(52% 0.19 25) flesh red
+   display: Righteous · body: Poppins · motif: vinyl grooves, stickers
    ================================================================ */
 
 @theme inline {
   --color-paper:    var(--paper);
   --color-paper-2:  var(--paper-2);
   --color-paper-3:  var(--paper-3);
-  --color-region-warm:   var(--region-warm);
-  --color-region-coral:  var(--region-coral);
-  --color-region-cobalt: var(--region-cobalt);
-  --color-region-plum:   var(--region-plum);
+  --color-region-peach: var(--region-peach);
+  --color-region-ember: var(--region-ember);
+  --color-region-rose:  var(--region-rose);
+  --color-region-leaf:  var(--region-leaf);
   --color-ink:      var(--ink);
   --color-ink-2:    var(--ink-2);
   --color-rule:     var(--rule);
   --color-muted:    var(--muted);
   --color-accent:   var(--accent);
   --color-accent2:  var(--accent-2);
+  --color-rind:     var(--rind);
+  --color-sunfade:  var(--sunfade);
   --color-focus:    var(--focus);
-  --color-coral:    var(--coral);
-  --color-cobalt:   var(--cobalt);
-  --color-plum:     var(--plum);
 
   --font-display: var(--display);
   --font-body:    var(--body);
-  --font-mono:    var(--mono);
   --font-sans:    var(--body);
+
+  --shadow-pop:    var(--shadow-pop);
+  --shadow-pop-sm: var(--shadow-pop-sm);
 }
 
 html, body {
@@ -53,8 +53,6 @@ body {
 
 /* Typography helpers ---------------------------------------------- */
 .font-display { font-family: var(--font-display); }
-.font-mono    { font-family: var(--font-mono); }
-.font-script  { font-family: var(--font-script); }
 
 /* Display text must wrap long words — no horizontal scroll */
 .font-display, h1, h2, h3 {
@@ -65,51 +63,76 @@ body {
 .section-title {
   font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: -0.015em;
+  letter-spacing: 0.005em;
   line-height: 1.05;
   overflow-wrap: anywhere;
   min-width: 0;
 }
 
-/* Letter salutation ------------------------------------------------ */
-.letter-salutation {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.15;
-  font-style: normal;
-  color: var(--color-ink);
-  overflow-wrap: anywhere;
-  min-width: 0;
+/* Section meta — plain sentence-case note, never an ALL-CAPS eyebrow */
+.section-meta {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--color-muted);
 }
 
-/* Hairline rule — the letter's divider vocabulary */
+/* Hairline rule — the tape's divider vocabulary */
 .rule {
   height: 1px;
   background: var(--color-rule);
   border: 0;
 }
 
-/* Outline button — quiet, editorial */
+/* Solid tape button — flesh red, sticker pop on hover */
+.btn-tape {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--color-accent);
+  color: var(--color-paper);
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-ink);
+  box-shadow: var(--shadow-pop-sm);
+  transition:
+    transform var(--dur-micro) var(--ease-out),
+    box-shadow var(--dur-micro) var(--ease-out),
+    background var(--dur-micro) var(--ease-out);
+  text-decoration: none;
+}
+.btn-tape:hover { background: var(--color-accent2); transform: translate(-1px, -1px); box-shadow: var(--shadow-pop); }
+.btn-tape:active { transform: translate(2px, 2px); box-shadow: none; }
+.btn-tape:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: var(--shadow-pop-sm); }
+
+/* Outline button — ink frame, fills on hover */
 .btn-outline {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: var(--space-xs);
   padding: var(--space-sm) var(--space-lg);
-  border: 1px solid var(--color-rule);
+  border: 1.5px solid var(--color-ink);
+  background: transparent;
   color: var(--color-ink);
   font-family: var(--font-body);
   font-size: var(--text-sm);
-  font-weight: 500;
+  font-weight: 600;
   border-radius: var(--radius-md);
-  transition: border-color var(--dur-micro) var(--ease-out), color var(--dur-micro) var(--ease-out);
+  transition:
+    background var(--dur-micro) var(--ease-out),
+    color var(--dur-micro) var(--ease-out),
+    transform var(--dur-micro) var(--ease-out);
   text-decoration: none;
 }
-.btn-outline:hover { border-color: var(--color-muted); color: var(--color-accent); }
+.btn-outline:hover { background: var(--color-ink); color: var(--color-paper); }
 .btn-outline:active { transform: translateY(1px); }
 .btn-outline:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* Sign-off link — typographic CTA with a drawn underline */
+/* Sign-off link — typographic CTA with a drawn underline (no arrow glyphs) */
 .cta-link {
   position: relative;
   display: inline-block;
@@ -134,6 +157,117 @@ body {
 }
 .cta-link:hover::after { transform: scaleX(1); }
 
+/* Sticker card — ink frame + hard pop shadow (the demo-tape motif) */
+.card-pop {
+  background: var(--color-paper);
+  border: 1.5px solid var(--color-ink);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-pop);
+}
+
+/* Sticker chip — small bordered tag */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+  border: 1.5px solid var(--color-ink);
+  border-radius: 999px;
+  background: var(--color-paper);
+  color: var(--color-ink-2);
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  transition:
+    border-color var(--dur-micro) var(--ease-out),
+    color var(--dur-micro) var(--ease-out),
+    transform var(--dur-micro) var(--ease-out);
+}
+.chip:hover { border-color: var(--color-accent); color: var(--color-accent); transform: translateY(-1px); }
+
+/* Vinyl grooves — subtle repeating-line backdrop for side markers */
+.grooves {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--color-ink) 0,
+    var(--color-ink) 1px,
+    transparent 1px,
+    transparent 9px
+  );
+}
+
+/* Boot screen — vinyl splash before entering the site ----------------
+   One orchestrated moment only: a spinning disc, a tape chip, and a
+   groove progress line. Leaves via .boot-screen--leaving, then the
+   component unmounts. Under reduced-motion there is no spin and the
+   progress completes instantly. */
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 600;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-paper);
+  transition: opacity 350ms var(--ease-out), transform 350ms var(--ease-out);
+}
+.boot-screen--leaving {
+  opacity: 0;
+  transform: scale(1.04);
+  pointer-events: none;
+}
+.boot-disc {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 9999px;
+  border: 1.5px solid var(--color-ink);
+  background:
+    radial-gradient(circle, var(--color-rind) 0 17%, var(--color-paper) 17.5% 19%, transparent 19.5%),
+    repeating-radial-gradient(circle at center, var(--color-ink) 0 1px, transparent 1px 5px),
+    var(--color-paper);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-pop);
+  animation: boot-spin 1.6s linear infinite;
+}
+.boot-label {
+  font-family: var(--font-display);
+  font-size: var(--text-xs);
+  letter-spacing: 0.12em;
+  color: var(--color-paper);
+  background: var(--color-ink);
+  border-radius: 9999px;
+  padding: 0.2rem 0.55rem;
+}
+.boot-progress {
+  margin-top: var(--space-lg);
+  width: 10rem;
+  height: 3px;
+  border-radius: 9999px;
+  background: var(--color-rule);
+  overflow: hidden;
+}
+.boot-progress::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: var(--color-accent);
+  transform-origin: left;
+  animation: boot-fill 1.4s var(--ease-out) forwards;
+}
+@keyframes boot-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes boot-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .boot-disc { animation: none; }
+  .boot-progress::after { animation-duration: 150ms; }
+}
+
 /* Focus ring — appears instantly, never animates -------------------- */
 :where(a, button, [role="button"], input, textarea, select):focus-visible {
   outline: 2px solid var(--color-focus);
@@ -154,14 +288,12 @@ body {
 .tabular { font-variant-numeric: tabular-nums; }
 
 /* text-safe — readability guard for text floating over scene photos.
-   A strong triple dark shadow replaces the old solid card background,
-   so type stays legible over the brightest frames without any solid
-   card — cards stay fully transparent. */
+   Light halo edition: the panorama now wears a warm paper veil, so ink
+   type gets a soft cream glow instead of the old dark shadow. */
 .text-safe {
   text-shadow:
-    0 1px 1px rgb(10 12 14 / 0.9),
-    0 2px 8px rgb(10 12 14 / 0.6),
-    0 0 24px rgb(10 12 14 / 0.45);
+    0 1px 0 rgb(255 252 244 / 0.85),
+    0 0 22px rgb(255 252 244 / 0.7);
 }
 
 /* Continuous scene panorama — region hosts -------------------------
@@ -169,10 +301,10 @@ body {
    through. Each host carries its region colour in --region-bg, which is
    only painted as a solid fallback under prefers-reduced-motion (when
    the track is hidden and the static per-section Scene takes over). */
-.region-warm   { --region-bg: var(--region-warm); }
-.region-coral  { --region-bg: var(--region-coral); }
-.region-cobalt { --region-bg: var(--region-cobalt); }
-.region-plum   { --region-bg: var(--region-plum); }
+.region-peach  { --region-bg: var(--region-peach); }
+.region-ember  { --region-bg: var(--region-ember); }
+.region-rose   { --region-bg: var(--region-rose); }
+.region-leaf   { --region-bg: var(--region-leaf); }
 .region-paper2 { --region-bg: var(--paper-2); }
 .region-paper3 { --region-bg: var(--paper-3); }
 .scene-host { background: transparent; }

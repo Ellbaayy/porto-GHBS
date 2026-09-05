@@ -17,9 +17,9 @@ gsap.registerPlugin(ScrollTrigger, useGSAP);
  * the next instead of cutting — vertical direction, matching the scroll.
  *
  * - One orchestrated motion only (the rail); everything else stays quiet.
- * - Per-frame region tints keep the warm/coral/cobalt/plum identity.
+ * - Per-frame region tints keep the peach/ember/rose/leaf identity.
  * - Seam gradients on each frame's edges hide the cuts between photos.
- * - Uniform scrim (contrast) + a single warm film grade unify the frames.
+ * - Warm paper veil (contrast) + a sun-fade grade unify the frames.
  * - Under reduced-motion the track is CSS-hidden and the per-section
  *   `Scene` fallbacks take over instead.
  * - Without JS the track renders at its start position (hero frame).
@@ -80,10 +80,10 @@ export function SceneTrack() {
           </figure>
         ))}
       </div>
-      {/* uniform scrim for text contrast */}
-      <div className="absolute inset-0 bg-paper/35" />
-      {/* single warm film grade — one world, one film */}
-      <div className="absolute inset-0 bg-accent/10 mix-blend-overlay" />
+      {/* warm paper veil for text contrast */}
+      <div className="absolute inset-0 bg-paper/50" />
+      {/* sun-fade grade — one world, one summer film */}
+      <div className="absolute inset-0 bg-sunfade/70 mix-blend-multiply" />
     </div>
   );
 }

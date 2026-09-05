@@ -57,7 +57,7 @@ export function Projects() {
     <section id="projects" className="scene-host region-paper2 relative isolate overflow-hidden py-20 md:py-28">
       <Scene scene={scenes.projects} />
       <Container>
-        <SectionHeader title="Selected projects" meta="four pieces of work" />
+        <SectionHeader title="Selected projects" meta="Four pieces of work, pressed to vinyl" />
 
         <div className="grid grid-cols-1 sm:grid-cols-[40px_1fr_40px] gap-3 items-stretch">
           <button
@@ -66,11 +66,11 @@ export function Projects() {
             onClick={() => scrollBy(-1)}
             disabled={atStart}
             className={cn(
-              "hidden sm:flex w-10 h-10 self-center rounded-md border border-rule text-safe",
+              "hidden sm:flex w-10 h-10 self-center rounded-md border-[1.5px] border-ink text-safe",
               "sm:col-start-1",
               "text-ink items-center justify-center",
-              "hover:text-accent hover:border-accent transition-colors",
-              "disabled:opacity-35 disabled:cursor-not-allowed",
+              "hover:bg-ink hover:text-paper transition-colors",
+              "disabled:opacity-35 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-ink",
             )}
           >
             <ChevronLeft className="w-4 h-4" />
@@ -88,27 +88,20 @@ export function Projects() {
                 data-stagger-item
                 onMouseEnter={(e) => liftCard(e.currentTarget, -4)}
                 onMouseLeave={(e) => liftCard(e.currentTarget, 0)}
-                className={cn(
-                  "snap-start border border-rule rounded-lg p-6 min-h-[320px] flex flex-col relative",
-                  "shadow-[0_10px_30px_rgb(0_0_0/0.35)]",
-                  "hover:border-accent transition-colors",
-                )}
+                className="card-pop snap-start p-6 min-h-[320px] flex flex-col relative"
               >
-                <span className="font-mono text-[12px] text-muted tabular mb-4 text-safe">
+                <span className="font-display text-sm text-accent tabular mb-4 text-safe">
                   {p.index} / {p.tag}
                 </span>
-                <h3 className="font-display text-[24px] leading-[1.15] text-ink m-0 mb-3 text-safe">
+                <h3 className="font-display text-2xl leading-[1.15] text-ink m-0 mb-3 text-safe">
                   {p.title}
                 </h3>
-                <p className="text-ink-2 text-[14px] leading-relaxed m-0 mb-[18px] flex-1 text-safe">
+                <p className="text-ink-2 text-sm leading-relaxed m-0 mb-[18px] flex-1 text-safe">
                   {p.description}
                 </p>
                 <ul className="flex flex-wrap gap-1.5 mt-auto">
                   {p.stack.map((t) => (
-                    <li
-                      key={t}
-                      className="font-mono text-[11px] px-2 py-1 rounded border border-rule text-ink-2 text-safe"
-                    >
+                    <li key={t} className="chip text-safe">
                       {t}
                     </li>
                   ))}
@@ -123,19 +116,19 @@ export function Projects() {
             onClick={() => scrollBy(1)}
             disabled={atEnd}
             className={cn(
-              "hidden sm:flex w-10 h-10 self-center rounded-md border border-rule text-safe",
+              "hidden sm:flex w-10 h-10 self-center rounded-md border-[1.5px] border-ink text-safe",
               "sm:col-start-3",
               "text-ink items-center justify-center",
-              "hover:text-accent hover:border-accent transition-colors",
-              "disabled:opacity-35 disabled:cursor-not-allowed",
+              "hover:bg-ink hover:text-paper transition-colors",
+              "disabled:opacity-35 disabled:cursor-not-allowed disabled:hover:bg-transparent disabled:hover:text-ink",
             )}
           >
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
 
-        <Stagger className="mt-14 md:mt-20 pt-7 border-t border-rule" gap={0.1}>
-          <h3 data-stagger-item className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted font-medium m-0 mb-6 text-safe">
+        <Stagger className="mt-14 md:mt-20 pt-7 border-t-2 border-ink" gap={0.1}>
+          <h3 data-stagger-item className="font-display text-xl text-ink m-0 mb-6 text-safe">
             Achievements
           </h3>
           <ul>
@@ -145,10 +138,10 @@ export function Projects() {
                 data-stagger-item
                 className="grid grid-cols-[80px_1fr] gap-5 items-start py-5 border-b border-rule last:border-b-0 text-safe"
               >
-                <span className="font-mono text-[13px] text-accent tabular">{a.year}</span>
+                <span className="font-display text-base text-accent tabular">{a.year}</span>
                 <div>
-                  <strong className="block text-[16px] mb-1 text-ink">{a.title}</strong>
-                  <p className="m-0 text-muted text-[14px]">{a.desc}</p>
+                  <strong className="block text-base mb-1 text-ink">{a.title}</strong>
+                  <p className="m-0 text-muted text-sm">{a.desc}</p>
                 </div>
               </li>
             ))}

@@ -7,9 +7,9 @@ import type { SceneSpec } from "@/data/scenes";
  *
  * Render as the FIRST child of a `relative isolate overflow-hidden` section —
  * content that follows in DOM order paints above it. The photo is purely
- * decorative (empty alt + aria-hidden); the uniform scrim, the
- * region-tinted gradient, and the `.text-safe` shadow on floating text
- * keep text contrast at readable levels.
+ * decorative (empty alt + aria-hidden); the warm paper veil, the
+ * region-tinted gradient, and the `.text-safe` halo on floating text
+ * keep ink text contrast at readable levels.
  *
  * Uses next/image `fill` so the browser picks a width-appropriate variant
  * (local WebP sources are re-encoded by the optimizer, sharp is installed).
@@ -34,7 +34,7 @@ export function Scene({ scene, className }: { scene: SceneSpec; className?: stri
         decoding="async"
         className="object-cover"
       />
-      <div className="absolute inset-0 bg-paper/35" />
+      <div className="absolute inset-0 bg-paper/55" />
       <div className={cn("absolute inset-0", scene.tint)} />
     </div>
   );

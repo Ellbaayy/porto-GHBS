@@ -4,22 +4,22 @@ export const profile = {
   initials: "GHBS",
   instagramHandle: "@ellbaayy",
   email: "bayusekti28@gmail.com",
-  tagline: "Personal Portfolio · 2026",
+  tagline: "Personal Portfolio 2026",
   summary:
-    "Informatics student at President University — focused on Artificial Intelligence, Computer Vision, and building intelligent systems that turn ideas into working software.",
+    "Informatics student at President University, focused on Artificial Intelligence, Computer Vision, and building intelligent systems that turn ideas into working software.",
 };
 
 export const heroStats = [
-  { label: "Projects", display: "04", foot: "Featured work · AI / Web" },
+  { label: "Projects", display: "04", foot: "Featured work in AI and Web" },
   { label: "Focus", display: "AI Engineer", displaySmall: true, foot: "Long-term direction" },
   { label: "Finalist", display: "AIC '26", foot: "AI Innovation Challenge" },
 ];
 
 export const aboutInfo = [
-  { label: "Currently", value: "Informatics student · President University" },
+  { label: "Currently", value: "Informatics student, President University" },
   { label: "Concentration", value: "Artificial Intelligence" },
-  { label: "Based in", value: "Indonesia · Open to remote" },
-  { label: "Available for", value: "Collaboration · AI experiments · Interesting projects" },
+  { label: "Based in", value: "Indonesia, open to remote" },
+  { label: "Available for", value: "Collaboration, AI experiments, interesting projects" },
 ];
 
 export const interests = [
@@ -87,7 +87,7 @@ export const projects: Project[] = [
   {
     index: "02",
     tag: "Local AI",
-    title: "AI USB — \"Offline Internet\"",
+    title: "AI USB, Offline Internet concept",
     description:
       "An experimental concept for a portable AI device that provides local AI capabilities without relying entirely on cloud services.",
     stack: ["AI Agent", "Linux", "Local AI", "IoT", "Networking"],
@@ -113,7 +113,7 @@ export const projects: Project[] = [
 export const achievements = [
   {
     year: "2026",
-    title: "AI Innovation Challenge 2026 — Finalist",
+    title: "AI Innovation Challenge 2026 finalist",
     desc: "Selected as a finalist, organized by DLH and President University.",
   },
   {
@@ -124,7 +124,7 @@ export const achievements = [
   {
     year: "Now",
     title: "President University",
-    desc: "Informatics student — Artificial Intelligence concentration.",
+    desc: "Informatics student, Artificial Intelligence concentration.",
   },
 ];
 
@@ -175,7 +175,7 @@ export const journey: JourneyEvent[] = [
     bullets: [
       "Focused on Artificial Intelligence",
       "Samsung Innovation Campus 2026",
-      "AI Innovation Challenge 2026 — Finalist",
+      "AI Innovation Challenge 2026 finalist",
       "Explored AI Agents & Computer Vision",
       "Started experimenting with MCP and local AI",
     ],

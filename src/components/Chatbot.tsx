@@ -131,30 +131,30 @@ export function Chatbot() {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="group relative flex items-center gap-2.5 px-5 py-3.5 bg-ink text-paper border border-rule rounded-full shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:border-accent hover:shadow-[0_10px_30px_rgba(0,0,0,0.6)] hover:-translate-y-0.5 transition-all duration-300 font-mono text-[12px] font-medium tracking-[0.04em] cursor-pointer"
+          className="group relative flex items-center gap-2.5 px-5 py-3.5 bg-ink text-paper border-[1.5px] border-ink rounded-full shadow-pop-sm hover:-translate-y-0.5 transition-all duration-300 text-sm font-medium cursor-pointer"
           aria-label="Open AI Chat"
         >
-          <span aria-hidden="true" className="absolute -top-1 -right-1 w-3 h-3 bg-coral rounded-full" />
-          <Sparkles className="w-4 h-4 text-accent group-hover:text-coral transition" />
+          <span aria-hidden="true" className="absolute -top-1 -right-1 w-3 h-3 bg-accent rounded-full border border-paper" />
+          <Sparkles className="w-4 h-4 text-accent group-hover:text-paper transition" />
           <span>Ask AI</span>
         </button>
       )}
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="w-[calc(100vw-2.5rem)] sm:w-[400px] h-[560px] max-h-[80vh] bg-paper-2 border border-rule rounded-xl shadow-[0_25px_60px_rgba(0,0,0,0.5)] flex flex-col overflow-hidden animate-[slideUp_0.35s_cubic-bezier(0.16,1,0.3,1)]">
+        <div className="w-[calc(100vw-2.5rem)] sm:w-[400px] h-[560px] max-h-[80vh] bg-paper-2 border-2 border-ink rounded-xl shadow-pop flex flex-col overflow-hidden animate-[slideUp_0.35s_cubic-bezier(0.16,1,0.3,1)]">
           {/* Header */}
-          <div className="px-5 py-4 bg-paper-3 border-b border-rule flex items-center justify-between">
+          <div className="px-5 py-4 bg-paper-3 border-b-2 border-ink flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-cobalt/15 border border-cobalt/40 flex items-center justify-center text-cobalt">
+              <div className="w-10 h-10 rounded-full bg-rind border-[1.5px] border-ink flex items-center justify-center text-paper">
                 <Sparkles className="w-4 h-4" />
               </div>
               <div>
-                <h3 className="font-display text-[19px] text-ink leading-none">
-                  GHBS <span className="text-cobalt">AI</span>
+                <h3 className="font-display text-xl text-ink leading-none">
+                  GHBS <span className="text-rind">AI</span>
                 </h3>
-                <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted flex items-center gap-1.5 mt-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" /> Groq · Qwen3.8
+                <span className="text-xs text-muted flex items-center gap-1.5 mt-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" /> Groq, Qwen 3.8
                 </span>
               </div>
             </div>
@@ -168,7 +168,7 @@ export function Chatbot() {
           </div>
 
           {/* Messages Container */}
-          <div className="flex-1 p-4 overflow-y-auto space-y-4 text-[14px] bg-paper-2" aria-live="polite">
+          <div className="flex-1 p-4 overflow-y-auto space-y-4 text-sm bg-paper-2" aria-live="polite">
             {messages.map((m, idx) => (
               <div
                 key={idx}
@@ -176,8 +176,8 @@ export function Chatbot() {
               >
                 <div className="max-w-[88%] flex flex-col gap-1">
                   <span
-                    className={`font-mono text-[10px] uppercase tracking-[0.08em] ${
-                      m.role === "user" ? "text-right text-coral" : "text-cobalt"
+                    className={`text-xs text-muted ${
+                      m.role === "user" ? "text-right" : "text-left"
                     }`}
                   >
                     {m.role === "user" ? "You" : "GHBS AI"}
@@ -185,8 +185,8 @@ export function Chatbot() {
                   <div
                     className={`px-4 py-3 leading-relaxed ${
                       m.role === "user"
-                        ? "bg-ink text-paper border border-ink rounded-lg rounded-tr-sm"
-                        : "bg-paper text-ink border border-rule rounded-lg rounded-tl-sm"
+                        ? "bg-ink text-paper border-[1.5px] border-ink rounded-lg rounded-tr-sm"
+                        : "bg-paper text-ink border-[1.5px] border-ink rounded-lg rounded-tl-sm"
                     }`}
                   >
                     {m.content}
@@ -198,13 +198,13 @@ export function Chatbot() {
             {isLoading && messages[messages.length - 1]?.role === "user" && (
               <div className="flex justify-start">
                 <div className="max-w-[88%] flex flex-col gap-1">
-                  <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-cobalt">
+                  <span className="text-xs text-muted">
                     GHBS AI
                   </span>
                   <div
                     role="status"
                     aria-label="Assistant is typing"
-                    className="bg-paper border border-rule px-4 py-3.5 rounded-lg rounded-tl-sm flex items-center gap-1.5"
+                    className="bg-paper border-[1.5px] border-ink px-4 py-3.5 rounded-lg rounded-tl-sm flex items-center gap-1.5"
                   >
                     <span aria-hidden="true" className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
                     <span aria-hidden="true" className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse [animation-delay:0.15s]" />
@@ -217,8 +217,8 @@ export function Chatbot() {
             {/* Suggestions — only show when there is just the initial assistant message */}
             {messages.length === 1 && !isLoading && (
               <div className="pt-2 space-y-2">
-                <p className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted">
-                  Try asking →
+                <p className="text-xs text-muted">
+                  Try asking
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {SUGGESTIONS.map((s) => (
@@ -226,7 +226,7 @@ export function Chatbot() {
                       key={s}
                       type="button"
                       onClick={() => sendMessage(s)}
-                      className="text-[12px] px-3 py-1.5 border border-rule rounded-full text-ink-2 bg-paper hover:border-accent hover:text-accent transition cursor-pointer"
+                      className="text-xs px-3 py-1.5 border-[1.5px] border-ink rounded-full text-ink-2 bg-paper hover:border-accent hover:text-accent transition cursor-pointer"
                     >
                       {s}
                     </button>
@@ -241,7 +241,7 @@ export function Chatbot() {
           {/* Input Form */}
           <form
             onSubmit={handleSubmit}
-            className="p-3 bg-paper-3 border-t border-rule flex items-center gap-2"
+            className="p-3 bg-paper-3 border-t-2 border-ink flex items-center gap-2"
           >
             <input
               type="text"
@@ -249,12 +249,12 @@ export function Chatbot() {
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask about Gesang or his projects..."
               aria-label="Message the assistant"
-              className="flex-1 bg-paper-2 border border-rule rounded-xl px-4 py-2.5 text-[14px] text-ink placeholder:text-muted focus:outline-none focus:border-accent transition"
+              className="flex-1 bg-paper-2 border-[1.5px] border-ink rounded-xl px-4 py-2.5 text-sm text-ink placeholder:text-muted focus:outline-none focus:border-accent transition"
             />
             <button
               type="submit"
               disabled={isLoading || !input.trim()}
-              className="w-10 h-10 rounded-xl bg-accent text-paper flex items-center justify-center hover:bg-accent2 transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-accent shrink-0 cursor-pointer"
+              className="w-10 h-10 rounded-xl bg-accent text-paper border-[1.5px] border-ink flex items-center justify-center hover:bg-accent2 transition disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-accent shrink-0 cursor-pointer"
               aria-label="Send message"
             >
               <Send className="w-4 h-4" />

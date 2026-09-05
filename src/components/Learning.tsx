@@ -7,58 +7,55 @@ import { Reveal } from "@/components/motion/Reveal";
 
 export function Learning() {
   return (
-    <section id="learning" className="scene-host region-cobalt relative isolate overflow-hidden py-20 md:py-28">
+    <section id="learning" className="scene-host region-leaf relative isolate overflow-hidden py-20 md:py-28">
       <Scene scene={scenes.learning} />
       <Container>
-        <SectionHeader title="Currently learning" meta="in progress" />
+        <SectionHeader title="Currently learning" meta="The tracks I have on repeat right now" />
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] gap-10 lg:gap-14 items-start">
-          <Reveal className="overflow-x-auto">
-            <table className="w-full border-collapse text-[15px]">
-              <thead>
-                <tr>
-                  <th className="text-left py-3.5 pr-4 font-mono text-[11px] uppercase tracking-[0.08em] text-cobalt font-medium border-b border-rule">
-                    Area
-                  </th>
-                  <th className="text-left py-3.5 font-mono text-[11px] uppercase tracking-[0.08em] text-cobalt font-medium border-b border-rule">
-                    Focus
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {learning.map((l) => (
-                  <tr key={l.area} className="border-b border-rule last:border-b-0">
-                    <td className="py-4 pr-4 font-medium text-ink align-top">{l.area}</td>
-                    <td className="py-4 text-ink-2 align-top">{l.focus}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </Reveal>
-
-          <Reveal as="aside" className="border border-rule rounded-lg p-6" delay={0.1}>
-            <h3 className="font-mono text-[11px] uppercase tracking-[0.08em] text-muted font-medium m-0 mb-4 text-safe">
-              Exploring AI Agents
-            </h3>
-            <p className="text-ink-2 text-[15px] m-0 mb-5 leading-relaxed text-safe">
-              I&apos;m exploring how AI agents can interact with tools, files, applications,
-              and development environments to automate complex workflows.
-            </p>
-            <ul className="grid gap-2 mb-5">
-              {agentTopics.map((t) => (
+          <Reveal>
+            <ol className="border-t-2 border-ink">
+              {learning.map((l, i) => (
                 <li
-                  key={t}
-                  className="relative pl-4 text-[14px] text-ink text-safe before:content-[''] before:absolute before:left-0 before:top-[11px] before:w-2 before:h-[1px] before:bg-accent"
+                  key={l.area}
+                  className="grid grid-cols-[3rem_1fr] sm:grid-cols-[3rem_1fr_1.2fr] gap-4 items-baseline py-4 border-b border-rule"
                 >
-                  {t}
+                  <span className="font-display text-sm text-accent tabular">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <span className="font-medium text-ink">{l.area}</span>
+                  <span className="text-ink-2 text-base col-start-2 sm:col-start-3">{l.focus}</span>
                 </li>
               ))}
-            </ul>
-            <p className="text-[13px] text-muted border-t border-rule pt-4 mt-2 leading-relaxed text-safe">
-              The long-term goal is to build systems where an AI agent understands a project,
-              interacts with its files and tools, executes tasks, tests the result, and
-              improves the implementation.
-            </p>
+            </ol>
+          </Reveal>
+
+          <Reveal as="aside" className="card-pop overflow-hidden" delay={0.1}>
+            <div aria-hidden="true" className="grooves h-3 border-b-2 border-ink opacity-60" />
+            <div className="p-6">
+              <h3 className="font-display text-xl text-ink m-0 mb-4 text-safe">
+                Exploring AI Agents
+              </h3>
+              <p className="text-ink-2 text-base m-0 mb-5 leading-relaxed text-safe">
+                I&apos;m exploring how AI agents can interact with tools, files, applications,
+                and development environments to automate complex workflows.
+              </p>
+              <ul className="grid gap-2 mb-5">
+                {agentTopics.map((t) => (
+                  <li
+                    key={t}
+                    className="relative pl-4 text-sm text-ink text-safe before:content-[''] before:absolute before:left-0 before:top-[11px] before:w-2 before:h-[1px] before:bg-accent"
+                  >
+                    {t}
+                  </li>
+                ))}
+              </ul>
+              <p className="text-sm text-muted border-t border-rule pt-4 mt-2 leading-relaxed text-safe">
+                The long-term goal is to build systems where an AI agent understands a project,
+                interacts with its files and tools, executes tasks, tests the result, and
+                improves the implementation.
+              </p>
+            </div>
           </Reveal>
         </div>
       </Container>

@@ -23,7 +23,7 @@ export function TopNav() {
         <a
           href="#hero"
           onClick={close}
-          className="font-display text-[20px] text-ink hover:text-accent transition-colors text-safe"
+          className="font-display text-xl text-ink hover:text-accent transition-colors text-safe"
         >
           {profile.short}
         </a>
@@ -33,7 +33,7 @@ export function TopNav() {
           href="#contact"
           className="hidden md:inline-flex btn-outline"
         >
-          Say hello →
+          Say hello
         </a>
 
         {/* Mobile — menu trigger */}
@@ -49,14 +49,14 @@ export function TopNav() {
       </nav>
 
       {open && (
-        <div>
+        <div className="bg-paper/95 backdrop-blur-sm border-y-2 border-ink">
           <ul className="max-w-[1240px] mx-auto px-6 py-4 flex flex-col gap-1">
             {links.map((l) => (
               <li key={l.href}>
                 <a
                   href={l.href}
                   onClick={close}
-                  className="block py-3.5 font-body text-[15px] text-ink hover:text-accent transition-colors text-safe"
+                  className="block py-3.5 font-body text-base text-ink hover:text-accent transition-colors"
                 >
                   {l.label}
                 </a>
@@ -64,7 +64,7 @@ export function TopNav() {
             ))}
             <li className="pt-4 pb-2">
               <a href="#contact" onClick={close} className="btn-outline">
-                Say hello →
+                Say hello
               </a>
             </li>
           </ul>

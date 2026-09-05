@@ -62,7 +62,7 @@ export function MusicPlayer() {
         onClick={toggle}
         aria-label={isMuted ? "Play background music" : "Mute background music"}
         aria-pressed={isMuted}
-        className="flex items-center justify-center w-11 h-11 rounded-full bg-ink text-paper border border-rule shadow-[0_10px_30px_rgba(0,0,0,0.4)] hover:border-accent hover:-translate-y-0.5 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
+        className="flex items-center justify-center w-11 h-11 rounded-full bg-ink text-paper border-[1.5px] border-ink shadow-pop-sm hover:-translate-y-0.5 transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent"
       >
         {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
       </button>
