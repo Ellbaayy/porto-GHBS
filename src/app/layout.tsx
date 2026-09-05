@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Sans, Instrument_Serif, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Sans, Instrument_Serif, JetBrains_Mono, Dancing_Script } from "next/font/google";
 import "./globals.css";
 import { TopNav } from "@/components/TopNav";
 import { Footer } from "@/components/Footer";
@@ -25,6 +25,12 @@ const jetbrains = JetBrains_Mono({
   weight: ["400", "500"],
 });
 
+const dancingScript = Dancing_Script({
+  variable: "--script",
+  subsets: ["latin"],
+  weight: ["700"],
+});
+
 export const metadata: Metadata = {
   title: "Gesang Hemas Bayu Sekti — Personal Portfolio",
   description:
@@ -37,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${ibmPlex.variable} ${instrumentSerif.variable} ${jetbrains.variable} bg-paper text-ink min-h-screen flex flex-col font-sans`}
+        className={`${ibmPlex.variable} ${instrumentSerif.variable} ${jetbrains.variable} ${dancingScript.variable} bg-paper text-ink min-h-screen flex flex-col font-sans`}
       >
         <SceneTrack />
         <TopNav />

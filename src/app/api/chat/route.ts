@@ -33,7 +33,7 @@ export async function POST(req: NextRequest) {
   if (!apiKey) {
     return new Response(
       JSON.stringify({
-        error: "GROQ_API_KEY belum dikonfigurasi. Tambahkan API key di file .env.local",
+        error: "GROQ_API_KEY is not configured. Add an API key in .env.local",
       }),
       { status: 500, headers: { "Content-Type": "application/json" } },
     );

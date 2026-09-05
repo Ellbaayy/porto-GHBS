@@ -9,10 +9,10 @@ type Message = {
 };
 
 const SUGGESTIONS = [
-  "Apa keahlian utamamu?",
-  "Ceritakan proyek AI Waste Classification",
-  "Bagaimana cara menghubungimu?",
-  "Apa yang sedang kamu pelajari?",
+  "What are your main skills?",
+  "Tell me about the AI Waste Classification project",
+  "How can I reach you?",
+  "What are you currently learning?",
 ];
 
 export function Chatbot() {
@@ -21,7 +21,7 @@ export function Chatbot() {
     {
       role: "assistant",
       content:
-        "Halo! Saya AI Assistant GHBS. Tanyakan apa saja tentang portofolio, proyek, atau keahlian Gesang.",
+        "Hi! I'm GHBS Assistant. Ask me anything about Gesang's portfolio, projects, or skills.",
     },
   ]);
   const [input, setInput] = useState("");
@@ -72,7 +72,7 @@ export function Chatbot() {
 
       if (!res.ok) {
         const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || "Gagal terhubung ke AI Assistant");
+        throw new Error(errData.error || "Failed to connect to AI Assistant");
       }
 
       if (!res.body) throw new Error("No response body");
@@ -136,7 +136,7 @@ export function Chatbot() {
         >
           <span aria-hidden="true" className="absolute -top-1 -right-1 w-3 h-3 bg-coral rounded-full" />
           <Sparkles className="w-4 h-4 text-accent group-hover:text-coral transition" />
-          <span>Tanya AI</span>
+          <span>Ask AI</span>
         </button>
       )}
 
@@ -203,7 +203,7 @@ export function Chatbot() {
                   </span>
                   <div
                     role="status"
-                    aria-label="Asisten sedang mengetik"
+                    aria-label="Assistant is typing"
                     className="bg-paper border border-rule px-4 py-3.5 rounded-lg rounded-tl-sm flex items-center gap-1.5"
                   >
                     <span aria-hidden="true" className="w-1.5 h-1.5 bg-accent rounded-full animate-pulse" />
@@ -218,7 +218,7 @@ export function Chatbot() {
             {messages.length === 1 && !isLoading && (
               <div className="pt-2 space-y-2">
                 <p className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted">
-                  Coba tanyakan →
+                  Try asking →
                 </p>
                 <div className="flex flex-wrap gap-1.5">
                   {SUGGESTIONS.map((s) => (
@@ -247,8 +247,8 @@ export function Chatbot() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Tanya tentang Gesang atau proyeknya..."
-              aria-label="Pesan ke asisten"
+              placeholder="Ask about Gesang or his projects..."
+              aria-label="Message the assistant"
               className="flex-1 bg-paper-2 border border-rule rounded-xl px-4 py-2.5 text-[14px] text-ink placeholder:text-muted focus:outline-none focus:border-accent transition"
             />
             <button

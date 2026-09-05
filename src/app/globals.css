@@ -54,6 +54,7 @@ body {
 /* Typography helpers ---------------------------------------------- */
 .font-display { font-family: var(--font-display); }
 .font-mono    { font-family: var(--font-mono); }
+.font-script  { font-family: var(--font-script); }
 
 /* Display text must wrap long words — no horizontal scroll */
 .font-display, h1, h2, h3 {

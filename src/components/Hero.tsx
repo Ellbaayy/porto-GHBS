@@ -22,7 +22,7 @@ export function Hero() {
               priority
               className="h-full w-full rounded-full object-cover"
             />
-            <WatermelonWreath className="pointer-events-none absolute -inset-[14%]" />
+            <WatermelonWreath className="pointer-events-none absolute -inset-[24%]" />
           </figure>
           <Stagger className="max-w-[65ch] md:order-1" gap={0.07}>
           <p data-stagger-item className="letter-salutation">Hello, I&apos;m Gesang Hemas Bayu Sekti.</p>
