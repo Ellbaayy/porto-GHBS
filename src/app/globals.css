@@ -194,6 +194,15 @@ body {
   );
 }
 
+/* Radio ticker — one restrained marquee strip ------------------------
+   Two identical halves translate -50% for a seamless loop. */
+.marquee-track {
+  animation: marquee 36s linear infinite;
+}
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
 /* Boot screen — vinyl splash before entering the site ----------------
    One orchestrated moment only: a spinning disc, a tape chip, and a
    groove progress line. Leaves via .boot-screen--leaving, then the
@@ -282,6 +291,8 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 150ms !important;
   }
+  .marquee-track { animation: none; }
+  .marquee { overflow-x: auto; }
 }
 
 /* Tabular figures for metrics */

@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { Marquee } from "@/components/Marquee";
 import { About } from "@/components/About";
 import { TechStack } from "@/components/TechStack";
 import { Projects } from "@/components/Projects";
@@ -10,6 +11,7 @@ export default function HomePage() {
   return (
     <>
       <Hero />
+      <Marquee />
       <About />
       <TechStack />
       <Projects />

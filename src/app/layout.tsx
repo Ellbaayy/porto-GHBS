@@ -5,7 +5,9 @@ import { TopNav } from "@/components/TopNav";
 import { Footer } from "@/components/Footer";
 import { Chatbot } from "@/components/Chatbot";
 import { MusicPlayer } from "@/components/MusicPlayer";
+import { Turntable } from "@/components/Turntable";
 import { SceneTrack } from "@/components/SceneTrack";
+import { AudioBackdrop } from "@/components/AudioBackdrop";
 import { BootScreen } from "@/components/BootScreen";
 
 const righteous = Righteous({
@@ -36,11 +38,13 @@ export default function RootLayout({
       >
         <BootScreen />
         <SceneTrack />
+        <AudioBackdrop />
         <TopNav />
         <main className="relative flex-1 z-[1]">{children}</main>
         <Footer />
         <Chatbot />
         <MusicPlayer />
+        <Turntable />
       </body>
     </html>
   );

@@ -2,6 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
+import {
+  ensureAudioGraph,
+  getAudioGraph,
+  resumeAudio,
+} from "@/lib/audio";
 
 /**
  * MusicPlayer — background music for the site, with a live equalizer.
@@ -12,25 +17,21 @@ import { Volume2, VolumeX } from "lucide-react";
  * is ever refused, the remaining listeners retry on the next gesture and
  * the button still lets the user start or mute manually.
  *
- * Equalizer: the track is routed element -> AnalyserNode -> speakers
- * (Web Audio API, same-origin file so no CORS is involved). Twelve bars
- * mirror the real frequency data each animation frame — the motion is
- * data-driven, never a decorative pulse. When the track is muted or
- * paused the bars rest flat; under reduced-motion they stay static.
+ * Equalizer: frequency data comes from the shared audio engine
+ * (@/lib/audio — element -> AnalyserNode -> speakers, same-origin file
+ * so no CORS is involved). Twelve bars mirror the real data each
+ * animation frame — the motion is data-driven, never a decorative pulse.
+ * When the track is muted or paused the bars rest flat; under
+ * reduced-motion they stay static.
  */
 const START_EVENTS = ["pointerdown", "keydown", "touchstart"] as const;
 const BAR_COUNT = 12;
-const FFT_SIZE = 128;
 
 export function MusicPlayer() {
   const audioRef = useRef<HTMLAudioElement>(null);
   const barsRef = useRef<(HTMLSpanElement | null)[]>([]);
   const startedRef = useRef(false);
-  const ctxRef = useRef<AudioContext | null>(null);
-  const analyserRef = useRef<AnalyserNode | null>(null);
-  const dataRef = useRef<Uint8Array<ArrayBuffer> | null>(null);
   const rafRef = useRef<number | null>(null);
-  const graphRef = useRef(false);
   const [isMuted, setIsMuted] = useState(false);
 
   const flattenBars = useCallback(() => {
@@ -48,10 +49,10 @@ export function MusicPlayer() {
   }, [flattenBars]);
 
   const startLoop = useCallback(() => {
-    const analyser = analyserRef.current;
-    const data = dataRef.current;
-    if (!analyser || !data) return;
+    const graph = getAudioGraph();
+    if (!graph) return;
     if (rafRef.current != null) return;
+    const { analyser, data } = graph;
     const tick = () => {
       const el = audioRef.current;
       if (!el || el.paused || el.muted) {
@@ -74,39 +75,6 @@ export function MusicPlayer() {
     rafRef.current = requestAnimationFrame(tick);
   }, [flattenBars]);
 
-  /** Build the element -> analyser -> speakers graph once, inside a gesture. */
-  const ensureGraph = useCallback((el: HTMLAudioElement) => {
-    if (graphRef.current) return;
-    try {
-      const Ctor =
-        window.AudioContext ??
-        (window as unknown as { webkitAudioContext?: typeof AudioContext }).webkitAudioContext;
-      if (!Ctor) return;
-      const ctx = new Ctor();
-      const source = ctx.createMediaElementSource(el);
-      const analyser = ctx.createAnalyser();
-      analyser.fftSize = FFT_SIZE;
-      analyser.smoothingTimeConstant = 0.8;
-      source.connect(analyser);
-      analyser.connect(ctx.destination);
-      ctxRef.current = ctx;
-      analyserRef.current = analyser;
-      dataRef.current = new Uint8Array(analyser.frequencyBinCount);
-      graphRef.current = true;
-    } catch {
-      /* Web Audio unavailable — music still plays, bars stay flat. */
-    }
-  }, []);
-
-  const resumeGraph = useCallback(() => {
-    const ctx = ctxRef.current;
-    if (ctx && ctx.state === "suspended") {
-      void ctx.resume().catch(() => {
-        /* stays suspended — music still plays through the element */
-      });
-    }
-  }, []);
-
   const maybeStartLoop = useCallback(() => {
     const el = audioRef.current;
     if (!el || el.paused || el.muted) return;
@@ -114,15 +82,14 @@ export function MusicPlayer() {
       flattenBars();
       return;
     }
-    if (analyserRef.current) startLoop();
+    if (getAudioGraph()) startLoop();
   }, [flattenBars, startLoop]);
 
   useEffect(() => {
     const tryStart = () => {
       const el = audioRef.current;
       if (!el || startedRef.current) return;
-      ensureGraph(el);
-      resumeGraph();
+      ensureAudioGraph(el);
       void el
         .play()
         .then(() => {
@@ -138,20 +105,15 @@ export function MusicPlayer() {
       START_EVENTS.forEach((e) => window.removeEventListener(e, tryStart));
       if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
       rafRef.current = null;
-      const ctx = ctxRef.current;
-      if (ctx) void ctx.close().catch(() => {});
-      ctxRef.current = null;
-      analyserRef.current = null;
-      graphRef.current = false;
+      /* Graph stays alive on purpose — see disposeAudioGraph docs. */
     };
-  }, [ensureGraph, maybeStartLoop, resumeGraph]);
+  }, [maybeStartLoop]);
 
   const toggle = () => {
     const el = audioRef.current;
     if (!el) return;
     if (!startedRef.current) {
-      ensureGraph(el);
-      resumeGraph();
+      ensureAudioGraph(el);
       void el
         .play()
         .then(() => {
@@ -168,7 +130,7 @@ export function MusicPlayer() {
     if (nextMuted) {
       stopLoop();
     } else {
-      resumeGraph();
+      resumeAudio();
       maybeStartLoop();
     }
   };
