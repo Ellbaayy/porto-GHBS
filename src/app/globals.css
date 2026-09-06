@@ -267,6 +267,7 @@ body {
 .boot-disc {
   width: 7rem;
   height: 7rem;
+  padding: 0;
   border-radius: 9999px;
   border: 1.5px solid var(--color-ink);
   background:
@@ -278,7 +279,12 @@ body {
   justify-content: center;
   box-shadow: var(--shadow-pop);
   animation: boot-spin 1.6s linear infinite;
+  cursor: pointer;
+  transition: border-color var(--dur-micro) var(--ease-out);
 }
+/* Hover answers the press: the disc claims the accent before entry.
+   (Transform is owned by the spin animation, so only color changes.) */
+.boot-disc:hover { border-color: var(--color-accent); }
 .boot-label {
   font-family: var(--font-display);
   font-size: var(--text-xs);
