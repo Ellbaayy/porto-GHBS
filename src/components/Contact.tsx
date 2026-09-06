@@ -32,7 +32,7 @@ export function Contact() {
               <li
                 key={l.label}
                 data-stagger-item
-                className="grid grid-cols-[110px_1fr] gap-4 items-center py-5 border-b border-rule"
+                className="row-hover grid grid-cols-[110px_1fr] gap-4 items-center py-5 border-b border-rule"
               >
                 <span className="text-sm text-muted">
                   {l.label}
@@ -41,7 +41,7 @@ export function Contact() {
                   href={l.href}
                   target={l.href.startsWith("http") ? "_blank" : undefined}
                   rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                  className="text-[clamp(16px,1.6vw,20px)] text-ink hover:text-accent transition-colors break-all"
+                  className="row-main value-draw w-fit max-w-full text-[clamp(16px,1.6vw,20px)] text-ink hover:text-accent transition-colors break-all"
                 >
                   {l.value}
                 </a>

@@ -18,19 +18,19 @@ export function Learning() {
               {learning.map((l, i) => (
                 <li
                   key={l.area}
-                  className="grid grid-cols-[3rem_1fr] sm:grid-cols-[3rem_1fr_1.2fr] gap-4 items-baseline py-4 border-b border-rule"
+                  className="row-hover grid grid-cols-[3rem_1fr] sm:grid-cols-[3rem_1fr_1.2fr] gap-4 items-baseline py-4 border-b border-rule"
                 >
-                  <span className="font-display text-sm text-accent tabular">
+                  <span className="card-index chip font-display text-sm tabular self-start">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-medium text-ink">{l.area}</span>
+                  <span className="row-main font-medium text-ink">{l.area}</span>
                   <span className="text-ink-2 text-base col-start-2 sm:col-start-3">{l.focus}</span>
                 </li>
               ))}
             </ol>
           </Reveal>
 
-          <Reveal as="aside" className="card-pop overflow-hidden" delay={0.1}>
+          <Reveal as="aside" className="card-pop hover-lift overflow-hidden" delay={0.1}>
             <div aria-hidden="true" className="grooves h-3 border-b-2 border-ink opacity-60" />
             <div className="p-6">
               <h3 className="font-display text-xl text-ink m-0 mb-4 text-safe">

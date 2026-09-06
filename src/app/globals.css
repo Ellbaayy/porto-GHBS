@@ -223,6 +223,92 @@ body {
   }
 }
 
+/* Section micro-interactions — "disc pop-out" layer --------------------
+   One vocabulary for every list and card that was static, so each scroll
+   region answers the pointer. All answers are transform/color only
+   (no layout shift), gated to hover-capable pointers, and collapse to a
+   150ms whisper under prefers-reduced-motion via the global rule.
+   - .hover-lift: a sticker card being pulled off the sleeve (lift + slight
+     tilt + accent border + deeper pop shadow). Reason: marks the lifted
+     record; same elevation language as btn-tape and project-card.
+   - .row-hover: a ledger row under the needle (label slides and takes the
+     accent; a vinyl sheen sweeps across, reusing the project-card motif).
+     Reason: the accent moment tells which row is under the needle at a
+     glance, without inventing a new decoration (no left stripe). */
+.hover-lift { position: relative; }
+.row-hover { position: relative; overflow: hidden; border-radius: var(--radius-sm); }
+.row-hover > .row-main {
+  transition:
+    transform var(--dur-micro) var(--ease-out),
+    color var(--dur-micro) var(--ease-out);
+}
+.row-hover .card-index {
+  transition:
+    background var(--dur-micro) var(--ease-out),
+    color var(--dur-micro) var(--ease-out),
+    border-color var(--dur-micro) var(--ease-out);
+}
+.row-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 42%, rgb(255 255 255 / 0.28) 50%, transparent 58%);
+  transform: translateX(-130%);
+  transition: transform 550ms var(--ease-out);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift {
+    transition:
+      transform var(--dur-micro) var(--ease-out),
+      border-color var(--dur-micro) var(--ease-out),
+      box-shadow var(--dur-micro) var(--ease-out);
+  }
+  .hover-lift:hover {
+    transform: translate(-3px, -4px) rotate(-0.5deg);
+    border-color: var(--color-accent);
+    box-shadow: 7px 7px 0 oklch(26% 0.02 55 / 0.9);
+  }
+  .row-hover:hover > .row-main {
+    transform: translateX(6px);
+    color: var(--color-accent);
+  }
+  .row-hover:hover::after { transform: translateX(130%); }
+  .row-hover:hover .card-index {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-paper);
+  }
+}
+
+/* Hero portrait — the sleeve being inspected. (Gated to fine pointers;
+   the spin-less .boot-disc keeps transform for its own animation, so this
+   class lives only here.) */
+.portrait-hover { transition: transform var(--dur-micro) var(--ease-out); }
+@media (hover: hover) and (pointer: fine) {
+  .portrait-hover:hover { transform: rotate(-4deg) scale(1.06); }
+}
+
+/* Value-link underline draw — reuse the cta-link gesture for contact
+   rows, since the links already carry the accent on hover. */
+.value-draw { position: relative; }
+.value-draw::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-accent);
+  transform: scaleX(0.3);
+  transform-origin: left;
+  transition: transform var(--dur-short) var(--ease-out);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .row-hover:hover .value-draw::after { transform: scaleX(1); }
+}
+
 /* Vinyl grooves — subtle repeating-line backdrop for side markers */
 .grooves {
   background-image: repeating-linear-gradient(

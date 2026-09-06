@@ -13,7 +13,7 @@ export function About() {
       <Container>
         <SectionHeader title="About me" meta="Who I am and where I work" />
 
-        <Reveal className="card-pop max-w-[72ch] overflow-hidden">
+        <Reveal className="card-pop hover-lift max-w-[72ch] overflow-hidden">
           <div aria-hidden="true" className="grooves h-3 border-b-2 border-ink opacity-60" />
           <div className="p-6 md:p-10">
             <p className="font-display text-[clamp(1.5rem,2.5vw,2rem)] leading-[1.3] text-ink mb-6">
@@ -37,8 +37,8 @@ export function About() {
 
         <Stagger className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 border-y-2 border-ink py-8">
           {aboutInfo.map((it) => (
-            <div key={it.label} data-stagger-item>
-              <span className="block text-sm text-muted mb-2">
+            <div key={it.label} data-stagger-item className="row-hover">
+              <span className="row-main block text-sm text-muted mb-2">
                 {it.label}
               </span>
               <p className="m-0 text-ink font-medium text-base leading-snug">{it.value}</p>

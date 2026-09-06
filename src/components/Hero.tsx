@@ -13,7 +13,7 @@ export function Hero() {
       <Scene scene={scenes.hero} />
       <Container>
         <div className="grid gap-12 md:grid-cols-[1fr_auto] md:items-center">
-          <figure className="relative justify-self-center w-44 h-44 md:w-60 md:h-60 md:order-2 shrink-0">
+          <figure className="portrait-hover relative justify-self-center w-44 h-44 md:w-60 md:h-60 md:order-2 shrink-0">
             <Image
               src="/images/misc/bayu-tw.jpeg"
               alt="Portrait of Gesang Hemas Bayu Sekti"

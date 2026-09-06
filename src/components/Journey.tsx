@@ -17,14 +17,14 @@ export function Journey() {
         <SectionHeader title="My journey" meta="Two sides of the same tape" />
 
         <Stagger className="grid grid-cols-1 md:grid-cols-2 gap-6" gap={0.12}>
-          <div data-stagger-item className="card-pop overflow-hidden">
+          <div data-stagger-item className="card-pop hover-lift overflow-hidden">
             <div aria-hidden="true" className="grooves h-3 border-b-2 border-ink opacity-60" />
             <div className="p-6 md:p-8">
               <p className="font-display text-xl text-ink m-0 mb-6">Side A</p>
               <ol className="grid gap-7">
                 {sideA.map((j) => (
-                  <li key={`${j.year}-${j.heading}`}>
-                    <span className="block font-display text-base text-muted tabular mb-1.5">
+                  <li key={`${j.year}-${j.heading}`} className="row-hover">
+                    <span className="row-main block font-display text-base text-muted tabular mb-1.5">
                       {j.year}
                     </span>
                     <strong className="text-lg text-ink">{j.heading}</strong>
@@ -43,14 +43,14 @@ export function Journey() {
             </div>
           </div>
 
-          <div data-stagger-item className="card-pop overflow-hidden">
+          <div data-stagger-item className="card-pop hover-lift overflow-hidden">
             <div aria-hidden="true" className="grooves h-3 border-b-2 border-ink opacity-60" />
             <div className="p-6 md:p-8">
               <p className="font-display text-xl text-ink m-0 mb-6">Side B</p>
               <ol className="grid gap-7">
                 {sideB.map((j) => (
-                  <li key={`${j.year}-${j.heading}`}>
-                    <span className="flex flex-wrap items-center gap-2 mb-1.5">
+                  <li key={`${j.year}-${j.heading}`} className="row-hover">
+                    <span className="row-main flex flex-wrap items-center gap-2 mb-1.5">
                       <span className="font-display text-base text-accent tabular">
                         {j.year}
                       </span>
