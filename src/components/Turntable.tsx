@@ -14,7 +14,7 @@ import { getAudioElement, getAudioGraph } from "@/lib/audio";
  * section label keeps updating. Controls live in MusicPlayer.
  */
 const SIDE_A = new Set(["hero", "about", "tech"]);
-const SECTION_IDS = ["hero", "about", "tech", "projects", "learning", "journey", "contact"];
+const SECTION_IDS = ["hero", "about", "tech", "projects", "learning", "certifications", "journey", "contact"];
 const TICKS = 28;
 const SPIN_FACTOR = 0.08;
 

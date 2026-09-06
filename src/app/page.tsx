@@ -4,6 +4,7 @@ import { About } from "@/components/About";
 import { TechStack } from "@/components/TechStack";
 import { Projects } from "@/components/Projects";
 import { Learning } from "@/components/Learning";
+import { Certifications } from "@/components/Certifications";
 import { Journey } from "@/components/Journey";
 import { Contact } from "@/components/Contact";
 
@@ -16,6 +17,7 @@ export default function HomePage() {
       <TechStack />
       <Projects />
       <Learning />
+      <Certifications />
       <Journey />
       <Contact />
     </>

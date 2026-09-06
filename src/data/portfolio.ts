@@ -128,6 +128,24 @@ export const achievements = [
   },
 ];
 
+export const certifications = [
+  {
+    year: "2025",
+    title: "English Proficiency Program for TOEIC, score 660",
+    desc: "Listening 345 and Reading 315 at Basic Working Proficiency level, issued by Language For International in April 2025.",
+  },
+  {
+    year: "2025",
+    title: "Certificate of Competence, Junior Technical Support",
+    desc: "Computer Network Engineering scheme, issued by BNSP through LSP SMK Negeri 1 Cikarang Barat in May 2025. Valid for three years.",
+  },
+  {
+    year: "2025",
+    title: "Global Entrepreneurship and Innovation Bootcamp",
+    desc: "Completion certificate from Thunderbird School of Global Management at Arizona State University, December 2025, under the Najafi 100 Million Learners Global Initiative.",
+  },
+];
+
 export const learning = [
   { area: "Artificial Intelligence", focus: "Machine learning & AI applications" },
   { area: "Python", focus: "AI, automation, and data processing" },
