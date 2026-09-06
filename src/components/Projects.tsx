@@ -11,13 +11,19 @@ import { Scene } from "@/components/Scene";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import { Stagger } from "@/components/motion/Stagger";
 
-const liftCard = (el: HTMLElement, y: number) => {
+const liftCard = (el: HTMLElement, lifted: boolean) => {
   if (
     !window.matchMedia("(prefers-reduced-motion: no-preference)").matches ||
     !window.matchMedia("(pointer: fine)").matches
   )
     return;
-  gsap.to(el, { y, duration: 0.22, ease: "power2.out", overwrite: "auto" });
+  gsap.to(el, {
+    y: lifted ? -6 : 0,
+    rotate: lifted ? -0.4 : 0,
+    duration: 0.22,
+    ease: "power2.out",
+    overwrite: "auto",
+  });
 };
 
 export function Projects() {
@@ -86,11 +92,11 @@ export function Projects() {
                 key={p.index}
                 data-card
                 data-stagger-item
-                onMouseEnter={(e) => liftCard(e.currentTarget, -4)}
-                onMouseLeave={(e) => liftCard(e.currentTarget, 0)}
-                className="card-pop snap-start p-6 min-h-[320px] flex flex-col relative"
+                onMouseEnter={(e) => liftCard(e.currentTarget, true)}
+                onMouseLeave={(e) => liftCard(e.currentTarget, false)}
+                className="card-pop project-card snap-start p-6 min-h-[320px] flex flex-col relative"
               >
-                <span className="font-display text-sm text-accent tabular mb-4 text-safe">
+                <span className="card-index chip font-display text-sm tabular mb-4 text-safe">
                   {p.index} / {p.tag}
                 </span>
                 <h3 className="font-display text-2xl leading-[1.15] text-ink m-0 mb-3 text-safe">

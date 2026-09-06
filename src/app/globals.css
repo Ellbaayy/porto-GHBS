@@ -183,6 +183,46 @@ body {
 }
 .chip:hover { border-color: var(--color-accent); color: var(--color-accent); transform: translateY(-1px); }
 
+/* Project card hover — Tier 1 feedback, answers hover only -----------
+   Lift+tilt (GSAP, fine pointers) marks the pulled record; the accent
+   border + deeper pop shadow give the elevation reason; the sheen sweep
+   echoes vinyl catching light; the index chip flips to an accent block
+   so the state change reads at a glance. Transform/opacity only, no
+   layout shift. Gated to hover-capable pointers; touch stays static. */
+.project-card { overflow: hidden; }
+@media (hover: hover) and (pointer: fine) {
+  .project-card {
+    transition:
+      border-color var(--dur-micro) var(--ease-out),
+      box-shadow var(--dur-micro) var(--ease-out);
+  }
+  .project-card:hover {
+    border-color: var(--color-accent);
+    box-shadow: 7px 7px 0 oklch(26% 0.02 55 / 0.9);
+  }
+  .project-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 42%, rgb(255 255 255 / 0.28) 50%, transparent 58%);
+    transform: translateX(-130%);
+    transition: transform 550ms var(--ease-out);
+    pointer-events: none;
+  }
+  .project-card:hover::after { transform: translateX(130%); }
+  .project-card .card-index {
+    transition:
+      background var(--dur-micro) var(--ease-out),
+      color var(--dur-micro) var(--ease-out),
+      border-color var(--dur-micro) var(--ease-out);
+  }
+  .project-card:hover .card-index {
+    background: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-paper);
+  }
+}
+
 /* Vinyl grooves — subtle repeating-line backdrop for side markers */
 .grooves {
   background-image: repeating-linear-gradient(
