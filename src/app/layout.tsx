@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Righteous, Poppins } from "next/font/google";
 import "./globals.css";
 import { TopNav } from "@/components/TopNav";
@@ -22,10 +22,45 @@ const poppins = Poppins({
   weight: ["400", "500", "600"],
 });
 
+const siteTitle = "Gesang Hemas Bayu Sekti | Personal Portfolio";
+const siteDescription =
+  "Personal portfolio of Gesang Hemas Bayu Sekti. Informatics student focused on Artificial Intelligence, software development, and emerging technologies.";
+
 export const metadata: Metadata = {
-  title: "Gesang Hemas Bayu Sekti | Personal Portfolio",
-  description:
-    "Personal portfolio of Gesang Hemas Bayu Sekti. Informatics student focused on Artificial Intelligence, software development, and emerging technologies.",
+  title: siteTitle,
+  description: siteDescription,
+  keywords: [
+    "Gesang Hemas Bayu Sekti",
+    "portfolio",
+    "AI engineer",
+    "artificial intelligence",
+    "computer vision",
+    "President University",
+  ],
+  authors: [{ name: "Gesang Hemas Bayu Sekti" }],
+  creator: "Gesang Hemas Bayu Sekti",
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    title: siteTitle,
+    description: siteDescription,
+    siteName: "Gesang Hemas Bayu Sekti",
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary",
+    title: siteTitle,
+    description: siteDescription,
+  },
+};
+
+/* Viewport lives in its own export (Next 14+ convention): paper-tinted
+   browser chrome, light-only scheme (the site ships one light grade). */
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#f4f2ef",
+  colorScheme: "light",
 };
 
 export default function RootLayout({

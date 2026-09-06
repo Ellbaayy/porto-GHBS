@@ -137,7 +137,8 @@ export function MusicPlayer() {
 
   return (
     <div className="fixed bottom-5 left-5 sm:bottom-6 sm:left-6 z-50">
-      <audio ref={audioRef} src="/audio/shining.mp3" loop preload="auto" />
+      {/* preload="metadata": the 5MB track streams on first gesture, not on page load. */}
+      <audio ref={audioRef} src="/audio/shining.mp3" loop preload="metadata" />
       <div className="flex items-center gap-3 rounded-full bg-paper border-[1.5px] border-ink shadow-pop-sm pl-4 pr-1.5 py-1.5">
         <div aria-hidden="true" className="flex items-end gap-[3px] h-6">
           {Array.from({ length: BAR_COUNT }).map((_, i) => (
