@@ -133,16 +133,22 @@ export const certifications = [
     year: "2025",
     title: "English Proficiency Program for TOEIC, score 660",
     desc: "Listening 345 and Reading 315 at Basic Working Proficiency level, issued by Language For International in April 2025.",
+    image: "/images/certifications/toeic.webp",
+    alt: "TOEIC English Proficiency certificate, score 660, issued by Language For International (certificate number redacted)",
   },
   {
     year: "2025",
     title: "Certificate of Competence, Junior Technical Support",
     desc: "Computer Network Engineering scheme, issued by BNSP through LSP SMK Negeri 1 Cikarang Barat in May 2025. Valid for three years.",
+    image: "/images/certifications/bnsp.webp",
+    alt: "BNSP Certificate of Competence, Junior Technical Support in Computer Network Engineering (serial numbers, barcode, and signature redacted)",
   },
   {
     year: "2025",
     title: "Global Entrepreneurship and Innovation Bootcamp",
     desc: "Completion certificate from Thunderbird School of Global Management at Arizona State University, December 2025, under the Najafi 100 Million Learners Global Initiative.",
+    image: "/images/certifications/geib.webp",
+    alt: "Global Entrepreneurship and Innovation Bootcamp completion certificate, Thunderbird School of Global Management at Arizona State University (QR code redacted)",
   },
 ];
 
