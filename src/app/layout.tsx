@@ -9,6 +9,7 @@ import { Turntable } from "@/components/Turntable";
 import { SceneTrack } from "@/components/SceneTrack";
 import { AudioBackdrop } from "@/components/AudioBackdrop";
 import { BootScreen } from "@/components/BootScreen";
+import { HeaderProvider } from "@/components/HeaderVisibility";
 
 const righteous = Righteous({
   variable: "--display",
@@ -71,15 +72,17 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${righteous.variable} bg-paper text-ink min-h-screen flex flex-col font-sans`}
       >
-        <BootScreen />
-        <SceneTrack />
-        <AudioBackdrop />
-        <TopNav />
-        <main className="relative flex-1 z-[1]">{children}</main>
-        <Footer />
-        <Chatbot />
-        <MusicPlayer />
-        <Turntable />
+        <HeaderProvider>
+          <BootScreen />
+          <SceneTrack />
+          <AudioBackdrop />
+          <TopNav />
+          <main className="relative flex-1 z-[1]">{children}</main>
+          <Footer />
+          <Chatbot />
+          <MusicPlayer />
+          <Turntable />
+        </HeaderProvider>
       </body>
     </html>
   );

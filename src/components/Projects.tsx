@@ -60,7 +60,7 @@ export function Projects() {
   };
 
   return (
-    <section id="projects" className="scene-host region-paper2 relative isolate overflow-hidden py-20 md:py-28">
+    <section id="projects" className="scene-host region-paper2 relative isolate overflow-hidden py-20 md:py-28 scroll-mt-24">
       <Scene scene={scenes.projects} />
       <Container>
         <SectionHeader title="Selected projects" meta="Four pieces of work, pressed to vinyl" />

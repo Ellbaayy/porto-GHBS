@@ -11,7 +11,7 @@ const sideB = journey.filter((j) => j.kind !== "past");
 
 export function Journey() {
   return (
-    <section id="journey" className="scene-host region-paper3 relative isolate overflow-hidden py-20 md:py-28">
+    <section id="journey" className="scene-host region-paper3 relative isolate overflow-hidden py-20 md:py-28 scroll-mt-24">
       <Scene scene={scenes.journey} />
       <Container>
         <SectionHeader title="My journey" meta="Two sides of the same tape" />

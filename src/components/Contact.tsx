@@ -8,7 +8,7 @@ import { Reveal } from "@/components/motion/Reveal";
 
 export function Contact() {
   return (
-    <section id="contact" className="scene-host region-rose relative isolate overflow-hidden py-20 md:py-28">
+    <section id="contact" className="scene-host region-rose relative isolate overflow-hidden py-20 md:py-28 scroll-mt-24">
       <Scene scene={scenes.contact} />
       <Container>
         <SectionHeader title="Get in touch" meta="Pick a track to reach me" />

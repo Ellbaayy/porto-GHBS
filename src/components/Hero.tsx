@@ -9,7 +9,10 @@ import { WatermelonWreath } from "@/components/WatermelonWreath";
 
 export function Hero() {
   return (
-    <section id="hero" className="scene-host region-peach relative isolate overflow-hidden pt-32 md:pt-40 pb-16 md:pb-24">
+    <section
+      id="hero"
+      className="scene-host region-peach relative isolate overflow-hidden pt-32 md:pt-40 pb-16 md:pb-24 scroll-mt-24"
+    >
       <Scene scene={scenes.hero} />
       <Container>
         <div className="grid gap-12 md:grid-cols-[1fr_auto] md:items-center">

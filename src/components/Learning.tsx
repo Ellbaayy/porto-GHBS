@@ -7,7 +7,7 @@ import { Reveal } from "@/components/motion/Reveal";
 
 export function Learning() {
   return (
-    <section id="learning" className="scene-host region-leaf relative isolate overflow-hidden py-20 md:py-28">
+    <section id="learning" className="scene-host region-leaf relative isolate overflow-hidden py-20 md:py-28 scroll-mt-24">
       <Scene scene={scenes.learning} />
       <Container>
         <SectionHeader title="Currently learning" meta="The tracks I have on repeat right now" />

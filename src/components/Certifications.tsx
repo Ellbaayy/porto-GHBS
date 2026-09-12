@@ -16,7 +16,7 @@ import { Stagger } from "@/components/motion/Stagger";
  */
 export function Certifications() {
   return (
-    <section id="certifications" className="scene-host region-peach relative isolate overflow-hidden py-20 md:py-28">
+    <section id="certifications" className="scene-host region-peach relative isolate overflow-hidden py-20 md:py-28 scroll-mt-24">
       <Container>
         <SectionHeader title="Certifications" meta="Proofs of craft, stamped and dated" />
 

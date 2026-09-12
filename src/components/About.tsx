@@ -8,7 +8,7 @@ import { Stagger } from "@/components/motion/Stagger";
 
 export function About() {
   return (
-    <section id="about" className="scene-host region-ember relative isolate overflow-hidden py-20 md:py-28">
+    <section id="about" className="scene-host region-ember relative isolate overflow-hidden py-20 md:py-28 scroll-mt-24">
       <Scene scene={scenes.about} />
       <Container>
         <SectionHeader title="About me" meta="Who I am and where I work" />

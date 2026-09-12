@@ -7,7 +7,7 @@ import { Stagger } from "@/components/motion/Stagger";
 
 export function TechStack() {
   return (
-    <section id="tech" className="scene-host region-rose relative isolate overflow-hidden py-20 md:py-28">
+    <section id="tech" className="scene-host region-rose relative isolate overflow-hidden py-20 md:py-28 scroll-mt-24">
       <Scene scene={scenes.tech} />
       <Container>
         <SectionHeader title="What I work with" meta="The tools and techniques I reach for" />
