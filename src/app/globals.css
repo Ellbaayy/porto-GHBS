@@ -563,3 +563,17 @@ body {
   size: A4;
   margin: 18mm 20mm;
 }
+
+/* Print question block — used by the essay document ----------------- */
+.print-question {
+  font-style: italic;
+  border-left: 2pt solid #000;
+  padding-left: 4mm;
+  margin: 0 0 8pt;
+}
+.print-wordcount {
+  font-size: 10pt;
+  font-style: italic;
+  margin-top: 6pt;
+  text-align: right;
+}
