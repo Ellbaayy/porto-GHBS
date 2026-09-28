@@ -457,3 +457,109 @@ body {
   .scene-section-img { display: block; }
   .scene-track { display: none; }
 }
+
+/* Print document — /print ------------------------------------------
+   Document-form variant of the portfolio for submission as PDF. The
+   interactive site's display face, scenes, and scroll layout do not
+   survive paper, so this route renders the same data in a plain format.
+   Typography follows the submission requirement: Times New Roman, 12pt,
+   1.5 line spacing, justified body text. */
+.print-doc {
+  font-family: "Times New Roman", "Liberation Serif", Times, serif;
+  font-size: 12pt;
+  line-height: 1.5;
+  text-align: justify;
+  color: #000;
+  background: #fff;
+  max-width: 174mm;
+  margin: 0 auto;
+  padding: 18mm 20mm;
+}
+.print-doc h1 {
+  font-size: 20pt;
+  line-height: 1.25;
+  margin: 0 0 4pt;
+  text-align: left;
+}
+.print-doc h2 {
+  font-size: 14pt;
+  margin: 14pt 0 6pt;
+  padding-bottom: 3pt;
+  border-bottom: 1pt solid #000;
+  text-align: left;
+  page-break-after: avoid;
+}
+.print-doc h3 {
+  font-size: 12pt;
+  margin: 9pt 0 3pt;
+  text-align: left;
+  page-break-after: avoid;
+}
+.print-doc p {
+  margin: 0 0 6pt;
+}
+.print-cover {
+  margin-bottom: 8pt;
+}
+.print-subtitle {
+  font-size: 11pt;
+  margin: 0 0 6pt;
+  text-align: left;
+}
+.print-contact-line {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 10pt;
+  font-size: 11pt;
+  text-align: left;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 14pt;
+}
+.print-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12pt;
+}
+.print-table th {
+  text-align: left;
+  vertical-align: top;
+  font-weight: bold;
+  padding: 1pt 10pt 1pt 0;
+  width: 34mm;
+}
+.print-table td {
+  vertical-align: top;
+  padding: 1pt 0;
+  text-align: left;
+}
+.print-skill-row {
+  margin: 0 0 5pt;
+}
+.print-project {
+  margin-bottom: 9pt;
+  page-break-inside: avoid;
+}
+.print-tag {
+  font-weight: normal;
+  font-style: italic;
+}
+.print-meta {
+  font-size: 11pt;
+  margin: 0 0 3pt;
+}
+.print-list {
+  margin: 0 0 6pt;
+  padding-left: 12mm;
+}
+.print-list li {
+  margin-bottom: 2pt;
+}
+.print-journey {
+  page-break-inside: avoid;
+}
+
+@page {
+  size: A4;
+  margin: 18mm 20mm;
+}
