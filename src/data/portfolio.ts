@@ -12,7 +12,7 @@ export const profile = {
 export const heroStats = [
   { label: "Projects", display: "03", foot: "Featured work in AI and Web" },
   { label: "Focus", display: "AI Engineer", displaySmall: true, foot: "Long-term direction" },
-  { label: "Finalist", display: "AIC '26", foot: "AI Innovation Challenge" },
+  { label: "Award", display: "3rd Winner", displaySmall: true, foot: "AIC '26 · Waste Management" },
 ];
 
 export const aboutInfo = [
@@ -88,7 +88,7 @@ export const projects: Project[] = [
     tag: "Computer Vision · Team",
     title: "Jakarta Waste Intelligence System",
     description:
-      "A computer vision system that classifies waste by category using object detection and machine learning. Built with a small team; my contribution focused on the detection pipeline.",
+      "A computer vision system that classifies waste by category using object detection and machine learning. Built with a small team and awarded 3rd Winner in the Waste Management sector at AI Innovation Challenge 2026; my contribution focused on the detection pipeline.",
     stack: ["Python", "YOLO", "Computer Vision"],
     links: [
       { label: "Repository", href: "https://github.com/bynguts/jwis-system", kind: "code" },
@@ -122,8 +122,8 @@ export const projects: Project[] = [
 export const achievements = [
   {
     year: "2026",
-    title: "AI Innovation Challenge 2026 finalist",
-    desc: "Selected as a finalist, organized by DLH and President University.",
+    title: "3rd Winner, AI Innovation Challenge 2026 — Waste Management sector",
+    desc: "Awarded with the team for the Jakarta Waste Intelligence System, organized by DLH and President University.",
   },
   {
     year: "2026",
@@ -208,7 +208,7 @@ export const journey: JourneyEvent[] = [
     bullets: [
       "Focused on Artificial Intelligence",
       "Samsung Innovation Campus 2026",
-      "AI Innovation Challenge 2026 finalist",
+      "3rd Winner, AI Innovation Challenge 2026 (Waste Management)",
       "Explored AI Agents & Computer Vision",
       "Started experimenting with MCP and local AI",
     ],

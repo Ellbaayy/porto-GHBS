@@ -79,7 +79,7 @@ My current goal is to become a **highly skilled AI Engineer** and build technolo
 
 ### 🤖 Jakarta Waste Intelligence System
 
-A computer vision system that classifies waste by category using object detection and machine learning. Built with a small team; my contribution focused on the detection pipeline.
+A computer vision system that classifies waste by category using object detection and machine learning. Built with a small team and awarded 3rd Winner in the Waste Management sector at AI Innovation Challenge 2026; my contribution focused on the detection pipeline.
 
 **Tech:** `Python` `YOLO` `Computer Vision`
 
@@ -109,9 +109,9 @@ A full-stack AI fragrance recommender built on a three-tier stack: a hand-writte
 
 ## 🏆 Achievements
 
-### AI Innovation Challenge 2026 — Finalist
+### AI Innovation Challenge 2026 — 3rd Winner, Waste Management
 
-Selected as a finalist in the **AI Innovation Challenge 2026**, organized by DLH and President University.
+Awarded **3rd Winner in the Waste Management sector** at the **AI Innovation Challenge 2026** with the team, for the Jakarta Waste Intelligence System. Organized by DLH and President University.
 
 ### Samsung Innovation Campus 2026
 
@@ -173,7 +173,7 @@ The long-term goal is to build systems where an AI agent can understand a projec
 │
 ├── Focused on Artificial Intelligence
 ├── Samsung Innovation Campus 2026
-├── AI Innovation Challenge 2026 — Finalist
+├── 3rd Winner, AI Innovation Challenge 2026 — Waste Management
 ├── Explored AI Agents & Computer Vision
 └── Started experimenting with MCP and local AI
 │
