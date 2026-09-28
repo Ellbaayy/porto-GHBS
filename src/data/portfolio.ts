@@ -10,7 +10,7 @@ export const profile = {
 };
 
 export const heroStats = [
-  { label: "Projects", display: "04", foot: "Featured work in AI and Web" },
+  { label: "Projects", display: "03", foot: "Featured work in AI and Web" },
   { label: "Focus", display: "AI Engineer", displaySmall: true, foot: "Long-term direction" },
   { label: "Finalist", display: "AIC '26", foot: "AI Innovation Challenge" },
 ];
@@ -67,46 +67,55 @@ export const techStack: { heading: string; items: TechItem[] }[] = [
   },
 ];
 
+export type ProjectLink = {
+  label: string;
+  href: string;
+  kind: "live" | "code";
+};
+
 export type Project = {
   index: string;
   tag: string;
   title: string;
   description: string;
   stack: string[];
+  links: ProjectLink[];
 };
 
 export const projects: Project[] = [
   {
     index: "01",
-    tag: "Computer Vision",
-    title: "AI Waste Classification",
+    tag: "Computer Vision · Team",
+    title: "Jakarta Waste Intelligence System",
     description:
-      "A computer vision system designed to classify waste based on its category using object detection and machine learning.",
+      "A computer vision system that classifies waste by category using object detection and machine learning. Built with a small team; my contribution focused on the detection pipeline.",
     stack: ["Python", "YOLO", "Computer Vision"],
+    links: [
+      { label: "Repository", href: "https://github.com/bynguts/jwis-system", kind: "code" },
+    ],
   },
   {
     index: "02",
-    tag: "Local AI",
-    title: "AI USB, Offline Internet concept",
+    tag: "Web + AI",
+    title: "L'ORE-AI",
     description:
-      "An experimental concept for a portable AI device that provides local AI capabilities without relying entirely on cloud services.",
-    stack: ["AI Agent", "Linux", "Local AI", "IoT", "Networking"],
+      "A deployed AI fragrance concierge that matches users to scents from mood, occasion, and identity. Includes a conversational assistant, climate-aware recommendations, and saved discovery history.",
+    stack: ["AI", "Web Development", "Recommendation System", "Conversational AI"],
+    links: [
+      { label: "Live demo", href: "https://gesanghemas-lore-ai.hf.space/", kind: "live" },
+      { label: "Repository", href: "https://github.com/Ellbaayy/Loreal", kind: "code" },
+    ],
   },
   {
     index: "03",
-    tag: "Recommendation",
-    title: "L'ORE-AI",
+    tag: "Fullstack",
+    title: "Prescentive",
     description:
-      "An AI-powered fragrance discovery concept designed to help users find fragrances based on their preferences and characteristics.",
-    stack: ["AI", "Web Development", "Recommendation System"],
-  },
-  {
-    index: "04",
-    tag: "Web",
-    title: "Kandang Lembu Kembar",
-    description:
-      "A digital platform concept for promoting and selling Qurban cattle, combining modern web design with digital marketing.",
-    stack: ["HTML", "CSS", "JavaScript", "Web Development"],
+      "A full-stack AI fragrance recommender built on a three-tier stack: a hand-written single-page frontend, a PHP JSON API, and a MySQL fragrance catalogue that grounds the model's recommendations.",
+    stack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
+    links: [
+      { label: "Repository", href: "https://github.com/Ellbaayy/precentive_AI", kind: "code" },
+    ],
   },
 ];
 

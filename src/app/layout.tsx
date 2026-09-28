@@ -28,6 +28,7 @@ const siteDescription =
   "Personal portfolio of Gesang Hemas Bayu Sekti. Informatics student focused on Artificial Intelligence, software development, and emerging technologies.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://porto-ghbs.vercel.app"),
   title: siteTitle,
   description: siteDescription,
   keywords: [
@@ -40,9 +41,11 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Gesang Hemas Bayu Sekti" }],
   creator: "Gesang Hemas Bayu Sekti",
+  alternates: { canonical: "/" },
   robots: { index: true, follow: true },
   openGraph: {
     type: "website",
+    url: "/",
     title: siteTitle,
     description: siteDescription,
     siteName: "Gesang Hemas Bayu Sekti",

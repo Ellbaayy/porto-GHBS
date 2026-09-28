@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, CodeXml, ExternalLink } from "lucide-react";
 import gsap from "gsap";
 import { projects, achievements } from "@/data/portfolio";
 import { scenes } from "@/data/scenes";
@@ -63,7 +63,7 @@ export function Projects() {
     <section id="projects" className="scene-host region-paper2 relative isolate overflow-hidden py-20 md:py-28 scroll-mt-24">
       <Scene scene={scenes.projects} />
       <Container>
-        <SectionHeader title="Selected projects" meta="Four pieces of work, pressed to vinyl" />
+        <SectionHeader title="Selected projects" meta="Three pieces of work, pressed to vinyl" />
 
         <div className="grid grid-cols-1 sm:grid-cols-[40px_1fr_40px] gap-3 items-stretch">
           <button
@@ -112,6 +112,29 @@ export function Projects() {
                     </li>
                   ))}
                 </ul>
+                <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-rule">
+                  {p.links.map((l) => (
+                    <a
+                      key={l.href}
+                      href={l.href}
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className={cn(
+                        "chip inline-flex items-center gap-1.5 text-safe",
+                        "text-ink border-[1.5px] border-ink no-underline",
+                        "hover:bg-ink hover:text-paper transition-colors",
+                        "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink",
+                      )}
+                    >
+                      {l.kind === "code" ? (
+                        <CodeXml className="w-3.5 h-3.5" aria-hidden="true" />
+                      ) : (
+                        <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                      )}
+                      {l.label}
+                    </a>
+                  ))}
+                </div>
               </article>
             ))}
           </Stagger>

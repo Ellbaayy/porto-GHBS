@@ -10,7 +10,7 @@ type Message = {
 
 const SUGGESTIONS = [
   "What are your main skills?",
-  "Tell me about the AI Waste Classification project",
+  "Tell me about the Jakarta Waste Intelligence System project",
   "How can I reach you?",
   "What are you currently learning?",
 ];

@@ -77,35 +77,33 @@ My current goal is to become a **highly skilled AI Engineer** and build technolo
 
 ## 🚀 Featured Projects
 
-### 🤖 AI Waste Classification
+### 🤖 Jakarta Waste Intelligence System
 
-A computer vision system designed to classify waste based on its category using object detection and machine learning.
+A computer vision system that classifies waste by category using object detection and machine learning. Built with a small team; my contribution focused on the detection pipeline.
 
 **Tech:** `Python` `YOLO` `Computer Vision`
 
----
-
-### 🌐 AI USB — "Offline Internet"
-
-An experimental concept for a portable AI device that provides local AI capabilities without relying entirely on cloud services.
-
-**Tech:** `AI Agent` `Linux` `Local AI` `IoT` `Networking`
+**Links:** [Repository](https://github.com/bynguts/jwis-system)
 
 ---
 
 ### 💄 L'ORE-AI
 
-An AI-powered fragrance discovery concept designed to help users find fragrances based on their preferences and characteristics.
+A deployed AI fragrance concierge that matches users to scents from mood, occasion, and identity. Includes a conversational assistant, climate-aware recommendations, and saved discovery history.
 
-**Tech:** `AI` `Web Development` `Recommendation System`
+**Tech:** `AI` `Web Development` `Recommendation System` `Conversational AI`
+
+**Links:** [Live demo](https://gesanghemas-lore-ai.hf.space/) · [Repository](https://github.com/Ellbaayy/Loreal)
 
 ---
 
-### 🐄 Kandang Lembu Kembar
+### 🧪 Prescentive
 
-A digital platform concept for promoting and selling Qurban cattle, combining modern web design with digital marketing.
+A full-stack AI fragrance recommender built on a three-tier stack: a hand-written single-page frontend, a PHP JSON API, and a MySQL fragrance catalogue that grounds the model's recommendations.
 
-**Tech:** `HTML` `CSS` `JavaScript` `Web Development`
+**Tech:** `HTML` `CSS` `JavaScript` `PHP` `MySQL`
+
+**Links:** [Repository](https://github.com/Ellbaayy/precentive_AI)
 
 ---
 

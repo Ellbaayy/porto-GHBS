@@ -1,7 +1,44 @@
 import { NextRequest } from "next/server";
 import { profile, interests, techStack, projects, achievements, learning, agentTopics, aboutInfo } from "@/data/portfolio";
+import { clientKey, rateLimit } from "@/lib/rate-limit";
 
 export const runtime = "nodejs";
+
+/** Requests allowed per client per window. */
+const RATE_LIMIT = 8;
+const RATE_WINDOW_MS = 60_000;
+
+/** Max conversation turns accepted per request, and max characters per turn. */
+const MAX_MESSAGES = 20;
+const MAX_CHARS_PER_MESSAGE = 2000;
+
+/**
+ * Origins allowed to call this endpoint from a browser.
+ *
+ * Vercel's preview and production hostnames are derived at deploy time, so
+ * they are matched by suffix rather than listed exhaustively. Requests with
+ * no Origin header (curl, server-to-server) are allowed through — the rate
+ * limiter is what protects against those.
+ */
+function isAllowedOrigin(origin: string | null): boolean {
+  if (!origin) return true;
+  let host: string;
+  try {
+    host = new URL(origin).hostname;
+  } catch {
+    return false;
+  }
+  if (host === "localhost" || host === "127.0.0.1") return true;
+  return host.endsWith(".vercel.app");
+}
+
+function jsonError(message: string, status: number, extra?: Record<string, string>) {
+  return new Response(JSON.stringify({ error: message }), {
+    status,
+    headers: { "Content-Type": "application/json", ...extra },
+  });
+}
+
 
 const systemPrompt = `You are "GHBS Assistant", an AI chatbot that represents ${profile.name}, a ${profile.summary}
 
@@ -28,14 +65,25 @@ ${achievements.map(a => `  • ${a.title} (${a.year}): ${a.desc}`).join("\n")}
 PERSONALITY: Friendly, professional, slightly playful. Use emojis sparingly. Keep answers under 150 words unless asked for detail. Never invent facts not in this prompt.`;
 
 export async function POST(req: NextRequest) {
+  if (!isAllowedOrigin(req.headers.get("origin"))) {
+    return jsonError("Forbidden origin", 403);
+  }
+
+  const limit = rateLimit(clientKey(req), RATE_LIMIT, RATE_WINDOW_MS);
+  if (!limit.ok) {
+    return jsonError("Too many requests. Please wait a moment.", 429, {
+      "Retry-After": String(limit.retryAfter),
+      "X-RateLimit-Limit": String(RATE_LIMIT),
+      "X-RateLimit-Remaining": "0",
+    });
+  }
+
   const apiKey = process.env.GROQ_API_KEY;
 
   if (!apiKey) {
-    return new Response(
-      JSON.stringify({
-        error: "GROQ_API_KEY is not configured. Add an API key in .env.local",
-      }),
-      { status: 500, headers: { "Content-Type": "application/json" } },
+    return jsonError(
+      "GROQ_API_KEY is not configured. Add an API key in .env.local",
+      500,
     );
   }
 
@@ -43,18 +91,24 @@ export async function POST(req: NextRequest) {
   try {
     body = await req.json();
   } catch {
-    return new Response(JSON.stringify({ error: "Invalid JSON body" }), {
-      status: 400,
-      headers: { "Content-Type": "application/json" },
-    });
+    return jsonError("Invalid JSON body", 400);
   }
 
   const messages = Array.isArray(body.messages) ? body.messages : [];
   if (messages.length === 0) {
-    return new Response(JSON.stringify({ error: "No messages provided" }), {
-      status: 400,
-      headers: { "Content-Type": "application/json" },
-    });
+    return jsonError("No messages provided", 400);
+  }
+  if (messages.length > MAX_MESSAGES) {
+    return jsonError("Conversation too long", 413);
+  }
+  if (
+    messages.some(
+      (m) =>
+        typeof m?.content !== "string" ||
+        m.content.length > MAX_CHARS_PER_MESSAGE,
+    )
+  ) {
+    return jsonError("Message too long", 413);
   }
 
   const groqRes = await fetch("https://api.groq.com/openai/v1/chat/completions", {
@@ -73,11 +127,10 @@ export async function POST(req: NextRequest) {
   });
 
   if (!groqRes.ok) {
-    const errText = await groqRes.text();
-    return new Response(
-      JSON.stringify({ error: `Groq API error: ${groqRes.status} ${errText}` }),
-      { status: groqRes.status, headers: { "Content-Type": "application/json" } },
-    );
+    // Log the upstream detail server-side; never echo it to the client, since
+    // it can carry account and quota information.
+    console.error("Groq API error", groqRes.status, await groqRes.text());
+    return jsonError("The assistant is temporarily unavailable.", 502);
   }
 
   // Stream response back to client
@@ -86,6 +139,8 @@ export async function POST(req: NextRequest) {
       "Content-Type": "text/event-stream",
       "Cache-Control": "no-cache",
       Connection: "keep-alive",
+      "X-RateLimit-Limit": String(RATE_LIMIT),
+      "X-RateLimit-Remaining": String(limit.remaining),
     },
   });
 }
