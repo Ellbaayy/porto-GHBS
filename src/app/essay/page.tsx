@@ -29,9 +29,6 @@ const essays: { question: string; paragraphs: string[] }[] = [
   },
 ];
 
-const countWords = (paragraphs: string[]) =>
-  paragraphs.join(" ").trim().split(/\s+/).filter(Boolean).length;
-
 export default function EssayPage() {
   return (
     <html lang="en">
@@ -56,9 +53,6 @@ export default function EssayPage() {
               {e.paragraphs.map((p, j) => (
                 <p key={j}>{p}</p>
               ))}
-              <p className="print-wordcount">
-                Word count: {countWords(e.paragraphs)} words
-              </p>
             </section>
           ))}
         </main>
