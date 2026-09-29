@@ -10,7 +10,7 @@ export const profile = {
 };
 
 export const heroStats = [
-  { label: "Projects", display: "03", foot: "Featured work in AI and Web" },
+  { label: "Projects", display: "02", foot: "Featured work in AI and Web" },
   { label: "Focus", display: "AI Engineer", displaySmall: true, foot: "Long-term direction" },
   { label: "Award", display: "3rd Winner", displaySmall: true, foot: "AIC '26 · Waste Management" },
 ];
@@ -104,17 +104,6 @@ export const projects: Project[] = [
     links: [
       { label: "Live demo", href: "https://gesanghemas-lore-ai.hf.space/", kind: "live" },
       { label: "Repository", href: "https://github.com/Ellbaayy/Loreal", kind: "code" },
-    ],
-  },
-  {
-    index: "03",
-    tag: "Fullstack",
-    title: "Prescentive",
-    description:
-      "A full-stack AI fragrance recommender built on a three-tier stack: a hand-written single-page frontend, a PHP JSON API, and a MySQL fragrance catalogue that grounds the model's recommendations.",
-    stack: ["HTML", "CSS", "JavaScript", "PHP", "MySQL"],
-    links: [
-      { label: "Repository", href: "https://github.com/Ellbaayy/precentive_AI", kind: "code" },
     ],
   },
 ];

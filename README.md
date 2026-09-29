@@ -97,16 +97,6 @@ A deployed AI fragrance concierge that matches users to scents from mood, occasi
 
 ---
 
-### 🧪 Prescentive
-
-A full-stack AI fragrance recommender built on a three-tier stack: a hand-written single-page frontend, a PHP JSON API, and a MySQL fragrance catalogue that grounds the model's recommendations.
-
-**Tech:** `HTML` `CSS` `JavaScript` `PHP` `MySQL`
-
-**Links:** [Repository](https://github.com/Ellbaayy/precentive_AI)
-
----
-
 ## 🏆 Achievements
 
 ### AI Innovation Challenge 2026 — 3rd Winner, Waste Management

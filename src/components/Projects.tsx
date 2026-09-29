@@ -63,7 +63,7 @@ export function Projects() {
     <section id="projects" className="scene-host region-paper2 relative isolate overflow-hidden py-20 md:py-28 scroll-mt-24">
       <Scene scene={scenes.projects} />
       <Container>
-        <SectionHeader title="Selected projects" meta="Three pieces of work, pressed to vinyl" />
+        <SectionHeader title="Selected projects" meta="Two pieces of work, pressed to vinyl" />
 
         <div className="grid grid-cols-1 sm:grid-cols-[40px_1fr_40px] gap-3 items-stretch">
           <button
