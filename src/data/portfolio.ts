@@ -108,11 +108,19 @@ export const projects: Project[] = [
   },
 ];
 
-export const achievements = [
+export const achievements: {
+  year: string;
+  title: string;
+  desc: string;
+  image?: string;
+  alt?: string;
+}[] = [
   {
     year: "2026",
     title: "3rd Winner, AI Innovation Challenge 2026 — Waste Management sector",
     desc: "Awarded with the team for the Jakarta Waste Intelligence System, organized by DLH and President University.",
+    image: "/images/certifications/ai-innovation.jpeg",
+    alt: "Team holding the 3rd Winner trophy and award board at the Open Innovation Challenge hosted by the DKI Jakarta Provincial Government, Waste Management sector",
   },
   {
     year: "2026",
