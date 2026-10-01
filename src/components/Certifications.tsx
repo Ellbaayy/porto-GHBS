@@ -37,7 +37,7 @@ export function Certifications() {
                   alt={c.alt}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-contain p-3"
+                  className={c.portrait ? "object-cover" : "object-contain p-3"}
                 />
               </span>
               <span className="flex flex-col gap-2 p-5">

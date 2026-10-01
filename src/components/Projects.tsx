@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import { ChevronLeft, ChevronRight, CodeXml, ExternalLink } from "lucide-react";
 import gsap from "gsap";
 import { projects, achievements } from "@/data/portfolio";
@@ -170,25 +169,6 @@ export function Projects() {
               >
                 <span className="font-display text-base text-accent tabular">{a.year}</span>
                 <div className="min-w-0">
-                  {a.image && (
-                    <a
-                      href={a.image}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`${a.title} (opens award photo in new tab)`}
-                      className="achievement-photo block float-right w-32 sm:w-40 md:w-48 ml-4 mb-3 rounded-md border-[1.5px] border-ink overflow-hidden no-underline"
-                    >
-                      <span className="relative block aspect-[3/4] bg-paper-2">
-                        <Image
-                          src={a.image}
-                          alt={a.alt ?? a.title}
-                          fill
-                          sizes="(max-width: 640px) 128px, (max-width: 768px) 160px, 192px"
-                          className="object-cover"
-                        />
-                      </span>
-                    </a>
-                  )}
                   <strong className="block text-base mb-1 text-ink">{a.title}</strong>
                   <p className="m-0 text-muted text-sm">{a.desc}</p>
                 </div>
